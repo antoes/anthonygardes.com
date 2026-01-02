@@ -1,0 +1,26 @@
+
+
+<div class="wa-stack">
+	{%- for post in postslist | reverse %}
+		<article class="wa-flank:end wa-align-items-center">
+			<div class="wa-stack wa-gap-s wa-align-items-start">
+				<h3 class="wa-heading-l">
+				<a href="{{ post.url }}" class="wa-link-plain">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a> <span class="wa-caption-xs">4 min</span>
+				</h3>
+				<div class="wa-stack wa-gap-2xs">
+				<p class="wa-caption-m">{{post.data.description}}</p>
+				<p>{{post.data.hero}}</p>
+				<span class="wa-caption-s">by <a href="#"><strong><em>{{post.data.author}}</em></strong></a></span>
+				<time class="postlist-date wa-caption-xs" datetime="{{ post.date | htmlDateString }}">Published: {{ post.date | readableDate("LLLL, yyyy") }}</time>
+				</div>
+				<div class="wa-cluster wa-gap-xs">		
+					<wa-tag size="small" appearance="filled">{{post.data.tags}}</wa-tag>
+				</div>	
+			</div>
+			<div class="wa-frame wa-border-radius-m" style="width: 10ch;">
+				<img src="{{post.data.hero}}"/>
+			</div>
+		</article>
+		<wa-divider></wa-divider>
+	{%- endfor %}
+</div>
