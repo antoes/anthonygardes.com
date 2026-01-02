@@ -3,11 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>{{ title or metadata.title }}</title>
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='100'>🤖</text></svg>"
+		/>
+		<title>Anthony Gardés</title>
 		<meta name="description" content="{{ description or metadata.description }}">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 		<script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous"></script>
 		<style>{% include "css/index.css" %}</style>
+		<script src="nunjucks.js"></script>
 	</head>
 	<body>
 		<wa-page>
@@ -22,15 +27,15 @@
 			</header>
 
 			<main id="main">
-				<heading-anchors>
-					{{ content | safe }}
-				</heading-anchors>
+				{% block content %}
+				{{ content | safe }}
+				{% endblock %}
 			</main>
 
 			<footer slot="footer" style="display: flex; justify-content: center;">
 				<div class="wa-stack wa-align-items-center">
 					<div class="wa-cluster wa-gap-s">
-						<wa-button href="www.linkedin.com/in/anthonygardes" appearance="plain" size="large">
+						<wa-button href="https://www.linkedin.com/in/anthonygardes/" appearance="plain" size="large">
 							<wa-icon name="linkedin" family="brands" label="Follow on LinkedIn"></wa-icon>
 						</wa-button>
 					</div>

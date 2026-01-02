@@ -3,23 +3,20 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='100'>🤖</text></svg>">
-		<title>Anthony Gardés</title>
+		<title>Eleventy Base Blog v9</title>
 		<meta name="description" content="I am writing about my experiences as a naval navel-gazer.">
 		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Eleventy Base Blog v9">
 		<script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous"></script>
 		
-		<script src="nunjucks.js"></script>
 	</head>
 	<body>
 		<wa-page>
 			<header slot="header" style="display: flex; justify-content: center;">
 				<div class="wa-stack wa-align-items-center">
 					<div class="wa-cluster wa-gap-xl">
-							<a href="/">Home</a>
-							<a href="/about/">About</a>
-							<a href="/blog/">Posts</a>
-							<a href="/contact/">Contact</a>
+							<a href="/pages/" aria-current="page">Home</a>
+							<a href="/blog/">Archive</a>
+							<a href="/pages/about/">About</a>
 							<a href="/feed/feed.xml">Feed</a>
 					</div>
 				</div>
@@ -28,7 +25,27 @@
 			<main id="main">
 				
 				
-<h1 id="tagged-second-tag">Tagged “second tag”</h1>
+<div class="wa-stack wa-gap-xl">
+  <div class="wa-grid wa-align-items-center">
+    <div class="wa-stack wa-gap-2xl">
+      <h2 id="i-m-anthony-explorer-of-all-things-creative-and-tech">👋 I'm Anthony, explorer of all things creative and tech.</h2>
+      <div class="wa-stack wa-gap-l">
+        <div class="wa-flank">
+          <div class="wa-stack wa-gap-3xs">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wa-frame wa-border-radius-l">
+      <picture><source type="image/avif" srcset="/.11ty/image/?src=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1461709444300-a6217cec3dff%3Fq%3D80%26w%3D5346%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D&width=5346&format=avif&via=transform 5346w"><source type="image/webp" srcset="/.11ty/image/?src=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1461709444300-a6217cec3dff%3Fq%3D80%26w%3D5346%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D&width=5346&format=webp&via=transform 5346w"><img loading="lazy" decoding="async" src="/.11ty/image/?src=https%3A%2F%2Fimages.unsplash.com%2Fphoto-1461709444300-a6217cec3dff%3Fq%3D80%26w%3D5346%26auto%3Dformat%26fit%3Dcrop%26ixlib%3Drb-4.1.0%26ixid%3DM3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%253D%253D&width=5346&format=jpeg&via=transform" alt="Five people's hands delicately holding colorful autumn leaves" width="5346" height="3555"></picture>
+    </div>
+  </div>
+</div>
+
+
+
+<h2 id="recent-posts">Recent Posts</h2>
+
 
 
 <div class="wa-stack">
@@ -48,7 +65,7 @@
 				</div>	
 			</div>
 			<div class="wa-frame wa-border-radius-m" style="width: 10ch;">
-				<img src="content/content/blog/fourthpost/testPhoto.jpeg">
+				<img src="content/pages/content/blog/fourthpost/testPhoto.jpeg">
 			</div>
 		</article>
 		<wa-divider></wa-divider>
@@ -72,9 +89,37 @@
 			</div>
 		</article>
 		<wa-divider></wa-divider>
+		<article class="wa-flank:end wa-align-items-center">
+			<div class="wa-stack wa-gap-s wa-align-items-start">
+				<h3 class="wa-heading-l" id="this-is-my-second-post-with-a-much-longer-title-4-min">
+				<a href="/blog/secondpost/" class="wa-link-plain">This is my second post with a much longer title.</a> <span class="wa-caption-xs">4 min</span>
+				</h3>
+				<div class="wa-stack wa-gap-2xs">
+				<p class="wa-caption-m">This is a post on My Blog about leveraging agile frameworks.</p>
+				<span class="wa-caption-s">by <a href="#"><strong><em>Anthony Gardés</em></strong></a></span>
+				<time class="postlist-date wa-caption-xs" datetime="2018-07-04">Published: July, 2018</time>
+				</div>
+				<div class="wa-cluster wa-gap-xs">		
+					<wa-tag size="small" appearance="filled">number 2</wa-tag>
+					<wa-tag size="small" appearance="filled"></wa-tag>
+				</div>	
+			</div>
+			<div class="wa-frame wa-border-radius-m" style="width: 10ch;">
+				<img src="">
+			</div>
+		</article>
+		<wa-divider></wa-divider>
 </div>
 
-<p>See <a href="/tags/">all tags</a>.</p>
+
+
+<p>2 more posts can be found in <a href="/blog/">the archive</a>.</p>
+
+
+
+
+
+
 
 
 				
@@ -92,7 +137,7 @@
 				</div>
 			</footer>
 
-		<!-- This page `/tags/second-tag/` was built on 2026-01-02T08:08:48.069Z -->
+		<!-- This page `/pages/` was built on 2026-01-02T07:39:15.925Z -->
 		<script type="module" src=""></script>
 		</wa-page>
 	</body>

@@ -66,6 +66,13 @@
 	
 		
 		<url>
+			<loc>https://example.com/contact/</loc>
+			<lastmod>2026-01-02</lastmod>
+		</url>
+	
+	
+		
+		<url>
 			<loc>https://example.com/feed/feed.xml</loc>
 			<lastmod>2026-01-02</lastmod>
 		</url>

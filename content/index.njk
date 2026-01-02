@@ -6,6 +6,27 @@ const eleventyNavigation = {
 
 const numberOfLatestPostsToShow = 3;
 ---
+<div class="wa-stack wa-gap-xl">
+  <div class="wa-grid wa-align-items-center">
+    <div class="wa-stack wa-gap-2xl">
+      <h2>
+👋 I'm Anthony, explorer of all things creative and tech.</h2>
+      <div class="wa-stack wa-gap-l">
+        <div class="wa-flank">
+          <div class="wa-stack wa-gap-3xs">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wa-frame wa-border-radius-l">
+      <img
+        src="./anthonyCard.JPG"
+        alt="Portrait of Anthony Gardés infront of a colorful wall"
+      />
+    </div>
+  </div>
+</div>
+
 {% set postsCount = collections.posts | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 <h2>Recent Posts</h2>
