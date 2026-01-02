@@ -1,12 +1,14 @@
 ---
-title: This is my fourth post
+title: "This is my fourth post"
 description: This is the template post!
 date: 2025-10-30
 tags: second tag
 author: Anthony Gardes
-hero: ./content/blog/fourthpost/testPhoto.jpeg
+hero: ./testPhoto.jpeg
+alt: some text about my photo
 ---
-![hero image](./testPhoto.jpeg)
+![hero image]({{hero | url}})
+
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
 

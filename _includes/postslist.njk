@@ -16,7 +16,9 @@
 				</div>	
 			</div>
 			<div class="wa-frame wa-border-radius-m" style="width: 10ch;">
-				<img src="{{post.data.hero}}"/>
+				<img 
+				src="{{post.data.hero | url}}"
+				alt="{{post.data.alt}}"/>
 			</div>
 		</article>
 		<wa-divider></wa-divider>

@@ -9,7 +9,6 @@
 		/>
 		<title>Anthony Gardés</title>
 		<meta name="description" content="{{ description or metadata.description }}">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="{{ metadata.title }}">
 		<script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous"></script>
 		<style>{% include "css/index.css" %}</style>
 		<script src="nunjucks.js"></script>
@@ -27,9 +26,7 @@
 			</header>
 
 			<main id="main">
-				{% block content %}
 				{{ content | safe }}
-				{% endblock %}
 			</main>
 
 			<footer slot="footer" style="display: flex; justify-content: center;">
