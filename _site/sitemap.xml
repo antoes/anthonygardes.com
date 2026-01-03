@@ -31,20 +31,6 @@
 	
 		
 		<url>
-			<loc>https://example.com/blog/</loc>
-			<lastmod>2025-10-29</lastmod>
-		</url>
-	
-	
-		
-		<url>
-			<loc>https://example.com/</loc>
-			<lastmod>2025-10-29</lastmod>
-		</url>
-	
-	
-		
-		<url>
 			<loc>https://example.com/tags/</loc>
 			<lastmod>2025-10-29</lastmod>
 		</url>
@@ -59,6 +45,13 @@
 	
 		
 		<url>
+			<loc>https://example.com/blog/</loc>
+			<lastmod>2026-01-02</lastmod>
+		</url>
+	
+	
+		
+		<url>
 			<loc>https://example.com/contact/</loc>
 			<lastmod>2026-01-02</lastmod>
 		</url>
@@ -66,8 +59,15 @@
 	
 		
 		<url>
-			<loc>https://example.com/feed/feed.xml</loc>
+			<loc>https://example.com/</loc>
 			<lastmod>2026-01-02</lastmod>
+		</url>
+	
+	
+		
+		<url>
+			<loc>https://example.com/feed/feed.xml</loc>
+			<lastmod>2026-01-03</lastmod>
 		</url>
 	
 </urlset>
