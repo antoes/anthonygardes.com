@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/antoes/anthonygardes.com#readme",
   "dependencies": {
-    "@11ty/eleventy": "^3.1.2"
+    "@11ty/eleventy": "^3.1.2",
+    "@11ty/eleventy-img": "^6.0.4"
   }
 }

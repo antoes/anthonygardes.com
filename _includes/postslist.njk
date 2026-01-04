@@ -1,0 +1,38 @@
+<div class="wa-stack" style="max-width: 70ch; margin: 0 auto;">
+  <div class="wa-split">
+  </div>
+  <div class="wa-stack">
+    {% for post in collections.post %}
+    <article class="wa-flank:end wa-align-items-center">
+      <div class="wa-stack wa-gap-s wa-align-items-start">
+        <h3 class="wa-heading-l">
+          <a href="{{ post.url }}" class="wa-link-plain">{{ post.data.title }}</a>
+        </h3>
+        <div class="wa-stack wa-gap-2xs">
+          <p class="wa-caption-m">
+            {{ post.data.description }}
+          </p>
+          <span class="wa-caption-s"
+            >by: <a href="#"
+              ><strong><em>{{ post.data.author }}</em></strong></a
+            ></span
+          >
+        </div>
+        <div class="wa-cluster wa-gap-2xs">
+        {% for tag in post.data.tags %}
+          {% if tag != "post" %} {# Optional: Exclude certain tags #}
+              <wa-tag size="small" appearance="filled"><a href="/tags/{{ tag | slugify }}/">{{ tag }}</a></wa-tag>
+          {% endif %}
+        {% endfor %}
+        </div>
+        </div>
+        <div class="wa-frame wa-border-radius-m" style="width: 10ch;">
+        <img
+          src="https://images.unsplash.com/photo-1720170060678-7c30a36937cd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
+      </div>
+    </article>
+    <wa-divider></wa-divider>
+    {% endfor %}
+  </div>
+</div>

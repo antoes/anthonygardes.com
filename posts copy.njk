@@ -1,5 +1,5 @@
 ---
-layout: /layouts/base.njk
+layout: /layouts/baseLayout.njk
 title: All Posts
 ---
 <div class="wa-stack" style="max-width: 70ch; margin: 0 auto;">
@@ -23,7 +23,13 @@ title: All Posts
             ></span
           >
         </div>
-        <wa-tag size="small" appearance="filled">{{ post.tag }}</wa-tag>
+        <div class="wa-cluster wa-gap-2xs">
+        {% for tag in post.data.tags %}
+          {% if tag != "post" %} {# Optional: Exclude certain tags #}
+              <wa-tag size="small" appearance="filled"><a href="/tags/{{ tag | slugify }}/">{{ tag }}</a></wa-tag>
+          {% endif %}
+        {% endfor %}
+        </div>
         </div>
         <div class="wa-frame wa-border-radius-m" style="width: 10ch;">
         <img
