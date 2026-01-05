@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/bundle.css">
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='100'>🤖</text></svg>"
@@ -22,15 +23,90 @@
 				</div>
 			</header>
       <main id="content">
-        <div class="wa-frame">
-        <img
-            src="./anthonyGardes-router-on-a-stick.webp"
-            alt="imaage of a router on a stick"
-        />
-        </div>
+        <div class="wa-stack wa-gap-m" style="max-width: 90ch; margin: 0 auto;">
+    <div class="wa-stack">
+        <div class="wa-grid wa-gap-2xl">
+            <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
+                <img
+                src="./anthonyGardes-router-on-a-stick.webp"
+                alt="image of a router on a stick"
+                />
+            </div>
+            <div class="wa-stack">
+                <h2>🧪 Networking Lab: Inter-VLAN Routing with Router-on-a-Stick</h2>
+                <p>by: Anthony Gardés</p>
+                <wa-format-date date="Tue Nov 04 2025 16:00:00 GMT-0800 (Pacific Standard Time)" month="long" day="numeric" year="numeric"></wa-format-date>
+            <div class="wa-cluster wa-gap-2xs">
+<p><wa-tag size="small" appearance="filled"><a href="/tags/networking/"># networking</a></wa-tag></p>
+<p><wa-tag size="small" appearance="filled"><a href="/tags/labs/"># labs</a></wa-tag></p>
+<p></div>
+</div>
+</div></p>
+</div>
+If you're studying for the CCNA or are a curious explorer sharpening your networking skills, understanding how VLANs communicate across a network is essential. This was one of the most helpful labs I encountered while studying for my CCNA, and I wanted to share my version with you all as one of my first lab posts on this new site.
+<p>Prerequisites:</p>
+<ul>
+<li><a href="https://www.netacad.com/cisco-packet-tracer">Cisco Packet Tracer</a></li>
+<li>A Computer</li>
+<li>Concepts: VLANs, 802.1Q trunking, router sub-interfaces, default gateways, subnetting basics, and basic Cisco CLI commands.</li>
+</ul>
+<p>To get the most out of this lab, try completing each step without referring to the tips provided (the tips are incomplete answers intended to kickstart you if you get stuck). Repeat this lab until you can complete all the steps without needing to refer to any dropdown tips. The starter packet tracer file is provided below; the final will be included at the end of the post, in case you get stuck and need a reference. Happy labbing!</p>
+<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./Lab - Router on a Stick.pkt">
+  <wa-icon slot="start" name="download"></wa-icon>
+  Lab - Router on a Stick.pkt
+</wa-button>
+<h2>Step 1: Configure the PCs IP Settings</h2>
+<p>Each PC is assigned to a different VLAN and must be manually configured with:</p>
+<ul>
+<li>IP Address - This should be the second usable IP address in the subnet.</li>
+<li>Subnet Mask - Use the CIDR notation provided for the mask.</li>
+<li>Default Gateway - this should be the first IP address in the subnet.</li>
+</ul>
+<wa-details summary="Tip #1" icon-placement="end">
+<p>This is what the settings would be for PC1 in VLAN 10.</p>
+<p>IP: <code>192.168.10.2</code><wa-copy-button value="192.168.10.2"></wa-copy-button></p>
+<p>Mask: <code>255.255.255.0</code><wa-copy-button value="255.255.255.0"></wa-copy-button></p>
+<p>Gateway: <code>192.168.10.1</code><wa-copy-button value="192.168.10.1"></wa-copy-button></p>
+</wa-details>
+<h2>Step 2: VLANS and Access Ports</h2>
+<p>Create the VLANs and Access Ports on SW1.</p>
+<wa-details summary="Tip #2" icon-placement="end">
+<p>This is how you'd configure VLAN 10 and interface fa0/1</p>
+<p>Switch(config)# <code>vlan 10</code><wa-copy-button value="vlan 10"></wa-copy-button></p>
+<p>Switch(config)# <code>interface fa0/1</code><wa-copy-button value="interface fa0/1"></wa-copy-button></p>
+<p>Switch(config-if)# <code>switchport mode</code><wa-copy-button value="switchport mode"></wa-copy-button></p>
+<p>Switch(config-if)# <code>switchport access</code><wa-copy-button value="switchport access"></wa-copy-button></p>
+</wa-details>
+<h2>Step 3: Trunk Links</h2>
+<p>Configure the trunk link to the Router.</p>
+<wa-details summary="Tip #3" icon-placement="end">
+<p>Switch(config)# <code>interface g0/1</code><wa-copy-button value="interface g0/1"></wa-copy-button></p>
+<p>Switch(config-if)# <code>switchport mode</code><wa-copy-button value="switchport mode"></wa-copy-button></p>
+<p>switch(config-if)# <code>switchport trunk</code><wa-copy-button value="switchport trunk"></wa-copy-button></p>
+</wa-details>
+<h2>Step 4: Configure Sub-Interfaces</h2>
+<p>Since one physical interface will carry traffic for multiple VLANs, we will need to create sub-interfaces on the Router.</p>
+<wa-details summary="Tip #4" icon-placement="end">
+<p>Router(config)# <code>interface g0/0.10</code><wa-copy-button value="interface g0/0.10"></wa-copy-button></p>
+<p>Router(config-subif)# <code>encapsulation dot1Q</code><wa-copy-button value="encapsulation dot1Q"></wa-copy-button></p>
+<p>Router(config-subif)# <code>ip address 192.168.10.1 255.255.255.0</code><wa-copy-button value="ip add 192.168.10.1 255.255.255.0"></wa-copy-button></p>
+<p><em>*Don't forget to enable the main interface!</em></p>
+</wa-details>
+<h2>Step 5: Test Inter-VLAN Connectivity</h2>
+<p>From PC1 in VLAN 10, try to ping PC2 in VLAN 20. If everything is configured correctly, you should see successful replies. If your pings are not successful, don't worry; this is a perfect time to start troubleshooting. Some ideas on troubleshooting are below. Also, below is the finished lab if you prefer to see the final working lab as a reference.</p>
+<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./Lab - Router on a Stick - Complete.pkt">
+  <wa-icon slot="start" name="download"></wa-icon>
+  Lab - Router on a Stick - Complete
+</wa-button>
+<wa-details summary="Troubleshooting Tips" icon-placement="end">
+<p>Pings failing between VLANs - Check default gateways on PCs</p>
+<p>No ping to Router - Verify g0/0 is no shutdown</p>
+<p>VLAN not working - check switchport mode = access</p>
+<p>Router no routing - confirm sub-interface uses correct VLAN and IP</p>
+<p>Trunk not forwarding VLAN Traffic - Verify switchport mode trunk</p>
+</wa-details>
+<p>Give this lab a few tries until you can complete it from memory. Another great practice would be to make your own lab from scratch once you have this down. Creating my own labs after learning the material helped solidify everything much more effectively. I hope you enjoyed this one and found value in the exercise. I'm happy to provide more; feel free to shoot me an email anytime with ideas or concepts I might be able to help with.</p>
 
-Some content
-This is a networking lab focused on inter-VLAN routing using the router-on-a-stick method. In this lab, we will configure a router to route traffic between multiple VLANs on a single physical interface.
       </main>
       <footer slot="footer" id="footer" class="wa-split">
         <p>Built by Anthony Gardés w/ 

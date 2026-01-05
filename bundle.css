@@ -1,0 +1,11 @@
+a:hover {
+    color: #FF8B57;
+}
+
+wa-page::part(navigation-toggle) {
+display: none;
+}
+
+wa-page::part(navigation) {
+display: none;
+}

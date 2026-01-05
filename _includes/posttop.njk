@@ -1,0 +1,23 @@
+<div class="wa-stack wa-gap-m" style="max-width: 90ch; margin: 0 auto;">
+    <div class="wa-stack">
+        <div class="wa-grid wa-gap-2xl">
+            <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
+                <img
+                src="{{ hero }}"
+                alt="{{ heroAlt }}"
+                />
+            </div>
+            <div class="wa-stack">
+                <h2>{{title}}</h2>
+                <p>by: {{ author }}</p>
+                <wa-format-date date="{{ date }}" month="long" day="numeric" year="numeric"></wa-format-date>
+            <div class="wa-cluster wa-gap-2xs">
+                {% for tag in tags %}
+                    {% if tag != "post" %}
+                        <wa-tag size="small" appearance="filled"><a href="/tags/{{ tag | slugify }}/"># {{ tag }}</a></wa-tag>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
