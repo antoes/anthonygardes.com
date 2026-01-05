@@ -1,9 +1,3 @@
-const { eleventyImageTransformPlugin } = require("@11ty/eleventy-img");
-
-module.exports = function (eleventyConfig) {
-	eleventyConfig.addPlugin(eleventyImageTransformPlugin);
-};
-
 module.exports = function (eleventyConfig) {
 	// Output directory: _site
 
@@ -18,4 +12,6 @@ module.exports = function (eleventyConfig) {
 	// Keeps the same directory structure.
 	eleventyConfig.addPassthroughCopy("**/*.jpg");
 	eleventyConfig.addPassthroughCopy("**/*.png");
+	eleventyConfig.addPassthroughCopy("**/*.jpeg");
+	eleventyConfig.addPassthroughCopy("**/*.webp");
 };
