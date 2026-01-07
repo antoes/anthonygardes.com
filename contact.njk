@@ -2,20 +2,24 @@
 layout: /layouts/baseLayout.njk
 title: My Homepage
 ---
-<div style="margin: 0 auto; max-width: 70ch;">
+<div>
   <div class="wa-stack">
     <div class="wa-stack wa-gap-xs">
       <h1>Contact</h1>
       <p>Have a love letter? Hate mail? A comment, a question, or an idea worthy of some tinkering. Either way, <b>I'd love to hear from you, so drop me a line!</b> Whether you're a developer, designer, or budding tech nerd, im all ears.</p>
     </div>
-    <form class="wa-stack wa-gap-l">
-      <div class="wa-grid">
-        <wa-input label="First name"></wa-input>
-        <wa-input label="Last name"></wa-input>
-      </div>
-      <wa-input label="Email" type="email"></wa-input>
-      <wa-textarea label="What's on your mind?"></wa-textarea>
-      <wa-button>Submit</wa-button>
-    </form>
+    <div>
+      <form id="emailForm" class="wa-stack wa-gap-l" 
+        action="https://prod-17.northcentralus.logic.azure.com:443/workflows/5426731710534ee8a69b1d1b83c9ddc1/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=4kI6rIdvF40x5cjbsdxzZfrElaFH5glj7KN0KopS6vQ" 
+        method="post">
+        <div class="wa-grid">
+          <wa-input label="First name" id="firstName" name="firstName" required></wa-input>
+          <wa-input label="Last name" id="lastName" name="lastName" required></wa-input>
+        </div>
+        <wa-input label="Email" type="email" id="email" name="email" required></wa-input>
+        <wa-textarea label="What's on your mind?" id="message" name="message" required></wa-textarea>
+        <wa-button appearance="filled-outlined" variant="brand" type="submit">Submit</wa-button>
+      </form>
+    </div>
   </div>
 </div>

@@ -3,18 +3,24 @@ layout: /layouts/baseLayout.njk
 title: 👋 I'm Anthony, explorer of all things creative and tech.
 blurb: 
 ---
-<div class="wa-grid wa-align-items-center wa-gap-3xl">
-    <div class="wa-stack wa-gap-3xl">
-      <h2>{{ title }}</h2>
-      <p>Feel free to reach me anytime with quesitons, comments or projects you'd like to see 🙌</p>
-      <div class="wa-cluster wa-gap-xs">
-        <wa-button appearance="plain" href="/contact/" variant="neutral" size="medium">Send me a message <wa-icon slot="end" name="arrow-right" aria-hidden="true" library="default"></wa-icon></wa-button>
-      </div>
+<div class="wa-stack wa-gap-m">
+    <div class="wa-stack">
+        <div class="wa-grid wa-gap-2xl">
+          <div class="wa-stack">
+               <h2>{{ title }}</h2>
+                <p>Feel free to reach me anytime with quesitons, comments or projects you'd like to see 🙌</p>
+                <div class="wa-cluster wa-gap-xs">
+                  <wa-button appearance="plain" href="/contact/" variant="neutral" size="medium">Send me a message <wa-icon slot="end" name="arrow-right" aria-hidden="true" library="default"></wa-icon></wa-button>
+                </div>
+            </div>
+            <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
+                <img
+                src="./public/img/anthonyCard.webp"
+                alt="Portrait of Anthony Gardés infront of a colorful wall"
+                />
+            </div>
+        </div>
     </div>
-    <div class="wa-frame wa-border-radius-l">
-            <img src="./public/img/anthonyCard.webp" alt="Portrait of Anthony Gardés infront of a colorful wall">
-    </div>
-  </div>
 </div>
 
 <div style="margin-top: 4rem;">
