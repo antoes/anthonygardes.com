@@ -50,13 +50,24 @@
 
 </div>
       </main>
-      <footer slot="footer" id="footer" class="wa-split" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
-        <p>Built by Anthony Gardés w/ 
-          <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>, 
-          <a href="https://www.11ty.dev/" target="_blank" rel="noopener">Webawesome</a>, and
-          <a href="https://azure.microsoft.com/en-us" target="_blank" rel="noopener">Microsoft Azure</a>.
-          <p>© 2026 All rights reserved.</p>
-        </p>
+      <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
+        <div class="wa-cluster wa-gap-s">
+          <wa-button href="https://www.linkedin.com/in/anthonygardes" target="_blank" rel="noopener" appearance="plain" size="large">
+              <wa-icon
+                name="linkedin"
+                family="brands"
+                label="linkedin">
+              </wa-icon>
+            </wa-button>
+        </div>
+        <div class="wa-split">
+          <p>Built by Anthony Gardés w/ 
+            <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>, 
+            <a href="https://www.11ty.dev/" target="_blank" rel="noopener">Webawesome</a>, and
+            <a href="https://azure.microsoft.com/en-us" target="_blank" rel="noopener">Microsoft Azure</a>.
+            <p>© 2026 All rights reserved.</p>
+          </p>
+        </div>
       </footer>
     </wa-page>
   </body>
