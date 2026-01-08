@@ -23,7 +23,14 @@
 				</div>
 			</header>
       <main id="content" style="max-width: 90ch; margin: 0 auto;">
-        <div>
+        <wa-dialog label="Message Sent" id="successDialog">
+  <div class="wa-stack wa-gap-m">
+    <p>🎉 Thanks for reaching out! I'll get back to you shortly.</p>
+  </div>
+  <wa-button slot="footer" variant="neutral" appearance="filled-outlined" id="closeDialogBtn" href="/"><wa-icon slot="start" name="home"></wa-icon>Home</wa-button>
+</wa-dialog>
+
+<div>
   <div class="wa-stack">
     <div class="wa-stack wa-gap-xs">
       <h1>Contact</h1>
@@ -31,29 +38,72 @@
     </div>
     <div>
       <form id="emailForm" class="wa-stack wa-gap-l" 
-        action="https://prod-17.northcentralus.logic.azure.com:443/workflows/5426731710534ee8a69b1d1b83c9ddc1/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=4kI6rIdvF40x5cjbsdxzZfrElaFH5glj7KN0KopS6vQ" 
+        action="https://prod-17.northcentralus.logic.azure.com:443/workflows/5426731710534ee8a69b1d1b83c9ddc1/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=4kI6rIdvF40x5cjbsdxzZfrElaFH5glj7KN0KopS6vQ"
         method="post">
+
         <div class="wa-grid">
           <wa-input label="First name" id="firstName" name="firstName" required></wa-input>
           <wa-input label="Last name" id="lastName" name="lastName" required></wa-input>
         </div>
         <wa-input label="Email" type="email" id="email" name="email" required></wa-input>
         <wa-textarea label="What's on your mind?" id="message" name="message" required></wa-textarea>
+        
         <wa-button appearance="filled-outlined" variant="brand" type="submit">Submit</wa-button>
       </form>
     </div>
   </div>
 </div>
 
-<!-- Success message container (hidden by default) -->
-<div id="success-message" style="display: none; color: green; padding: 10px; border: 1px solid green;">
-    Message sent! Thank you!
-</div>
+<script>
+  // Handle the Close button inside the dialog
+  const dialog = document.getElementById('successDialog');
+  const closeBtn = document.getElementById('closeDialogBtn');
+  
+  closeBtn.addEventListener('click', () => {
+    dialog.open = false; // The Web Awesome way to close
+  });
 
-<!-- Error message container (hidden by default) -->
-<div id="error-message" style="display: none; color: red;">
-    An error occurred. Please try again.
-</div>
+  // Handle Form Submission
+  document.getElementById('emailForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    
+    const form = e.target;
+    const submitBtn = form.querySelector('wa-button[type="submit"]');
+    
+    // 1. TURN ON LOADING
+    submitBtn.loading = true;
+
+    const data = {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value
+    };
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      if (response.ok) {
+        // 2. OPEN DIALOG (The Web Awesome Way)
+        dialog.open = true;
+        form.reset();
+      } else {
+        alert('Error sending message.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Network error.');
+    })
+    .finally(() => {
+      // 3. TURN OFF LOADING
+      submitBtn.loading = false;
+    });
+  });
+</script>
       </main>
       <footer slot="footer" id="footer" class="wa-split" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
         <p>Built by Anthony Gardés w/ 
