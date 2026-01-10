@@ -17,4 +17,5 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("**/*.gif");
 	eleventyConfig.addPassthroughCopy("**/*.webp");
 	eleventyConfig.addPassthroughCopy("**/*.pkt");
+	eleventyConfig.addPassthroughCopy("**/*.mp4");
 };
