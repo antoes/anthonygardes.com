@@ -2,7 +2,7 @@
 title: "🧪 Networking Lab: Inter-VLAN Routing with Router-on-a-Stick"
 author: "Anthony Gardés"
 description: "A helpful lab on inter-VLAN routing using the router-on-a-stick method."
-hero: "./anthonyGardes-router-on-a-stick.webp"
+hero: "./router-on-a-stick.webp"
 heroAlt: "image of a router on a stick"
 date: 2025-11-05
 lastModified: 2026-01-03
@@ -12,7 +12,7 @@ tags: ["networking", "labs"]
 If you're studying for the CCNA or are a curious explorer sharpening your networking skills, understanding how VLANs communicate across a network is essential. This was one of the most helpful labs I encountered while studying for my CCNA, and I wanted to share my version with you all as one of my first lab posts on this new site.
 
 Prerequisites:
-- [Cisco Packet Tracer](https://www.netacad.com/cisco-packet-tracer)
+- <a href="https://www.netacad.com/cisco-packet-tracer" target="_blank">Cisco Packet Tracer</a>
 - A Computer
 - Concepts: VLANs, 802.1Q trunking, router sub-interfaces, default gateways, subnetting basics, and basic Cisco CLI commands.
 

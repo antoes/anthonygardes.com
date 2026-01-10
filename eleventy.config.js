@@ -14,6 +14,7 @@ module.exports = function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("**/*.jpg");
 	eleventyConfig.addPassthroughCopy("**/*.png");
 	eleventyConfig.addPassthroughCopy("**/*.jpeg");
-	eleventyConfig.addPassthroughCopy("**/*.webp")
+	eleventyConfig.addPassthroughCopy("**/*.gif");
+	eleventyConfig.addPassthroughCopy("**/*.webp");
 	eleventyConfig.addPassthroughCopy("**/*.pkt");
 };

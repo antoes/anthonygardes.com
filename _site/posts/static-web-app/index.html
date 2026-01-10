@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/bundle.css">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='100'>🤖</text></svg>"
+    />
+    <title>Anthony Gardes</title>
+  </head>
+  <body>
+    <wa-page>
+      <header slot="header" style="display: flex; justify-content: center;">
+				<div class="wa-stack wa-align-items-center">
+					<div class="wa-cluster wa-gap-l">
+						<wa-button appearance="plain" href="/">Home</wa-button>
+            <wa-button appearance="plain" href="/contact">Contact</wa-button>
+            <wa-button appearance="plain" href="/posts">Posts</wa-button>
+					</div>
+				</div>
+			</header>
+      <main id="content" style="max-width: 90ch; margin: 0 auto;">
+        <div class="wa-stack wa-gap-m" style="max-width: 90ch; margin: 0 auto;">
+    <div class="wa-stack">
+        <div class="wa-grid wa-gap-2xl">
+            <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
+                <img
+                src="./static-web-app.webp"
+                alt="image of a character browsing a static web app"
+                />
+            </div>
+            <div class="wa-stack">
+                <h2>⚡️ Azure Lab: Azure Static Web App</h2>
+                <p>by: Anthony Gardés</p>
+                <wa-format-date date="Sun Jan 04 2026 16:00:00 GMT-0800 (Pacific Standard Time)" month="long" day="numeric" year="numeric"></wa-format-date>
+            <div class="wa-cluster wa-gap-2xs">
+<p><wa-tag size="small" appearance="filled"><a href="/tags/azure/"># azure</a></wa-tag></p>
+<p><wa-tag size="small" appearance="filled"><a href="/tags/labs/"># labs</a></wa-tag></p>
+<p></div>
+</div>
+</div></p>
+</div>
+While studying for the AZ104 I came across static web apps and thought, this would be perfect for hosting my personal site, and it’s free! So I decided to move my personal site off my self hosted solution and get it up and running on Azure. I’ll walk you thorugh the steps, on how to get up your first static site with this fun lab.
+<p>Prerequisites:</p>
+<ul>
+<li>A <a href="https://github.com/" target="_blank">GitHub</a> account</li>
+<li>A <a href="https://azure.microsoft.com/en-us" target="_blank">Microsoft Azure Account</a></li>
+<li>IDE or Text Editor (optional)</li>
+</ul>
+<h2>Step 1</h2>
+<p>Log into your Github account then fork this repo to your account <a href="https://github.com/antoes/azureLabs" target="_blank">antoes/azureLabs: Static web application lab</a>. We will use this later in our CI/CD pipeline (it’s much easier than it sounds).</p>
+<h2>Step 2</h2>
+<p>Log into your your Microsoft Azure Account and create a resource group for you project, this will allow you to contain your lab in a nice little container for all your resources and spin them down at once when you complete the lab.
+<div class="wa-frame" slot="media" style="min-height: 100px; max-height: 500px;aspect-ratio: auto;">
+<img src="./resourceGroup.png" alt="Microsoft Azure Resource Group" />
+</div></p>
+<h2>Step 3</h2>
+<p>Jump into the resource group you just created, then hit the blue create button inside of the resource group. Seach for “static web app” then select and create, fill out the fields below.</p>
+<ul>
+<li><strong>Name:</strong> enter a original name here.</li>
+<li><strong>Plan type:</strong> Free: For hobby or personal project</li>
+<li><strong>Source:</strong> GitHub</li>
+<li><strong>GitHub account:</strong> Log in with the account you setup in step 1</li>
+<li><strong>Organization:</strong> your GitHub account</li>
+<li><strong>Repository:</strong> azureLabs (or the one you changed it to)</li>
+<li><strong>Branch:</strong> main</li>
+<li><strong>Build Presets:</strong> Custom (this should be automatically detected)</li>
+<li><strong>App location:</strong> ./static-web-app-lab ( this should be auto filled also)
+Then hit review + create.</li>
+</ul>
+<h2>Step 4</h2>
+<p>Give it some time to deploy then once the resource is ready select view your site. Congratulations, you have just created your first static web app! 🎉
+<div class="wa-frame" slot="media" style="min-height: 50px; max-height: 300px; aspect-ratio: auto;">
+<img src="./deployment-complete.png" alt="Microsoft Azure Resource deployment complete" />
+</div></p>
+<h2>Optional (but fun!)</h2>
+<p>If you are feeling adventurous try editing some of the html from your forked repository with your favorite IDE or editing it directly on the web and watch your CI/CD pipeline in action. Once changes are comitted to your main branch your static website will update automatically!</p>
+<p>I hope you learned something valuable on this one! If you have any questions, get hung up, or just wanna say hi feel free to drop me a message!</p>
+
+      </main>
+      <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
+        <div class="wa-cluster wa-gap-s">
+          <wa-button href="https://www.linkedin.com/in/anthonygardes" target="_blank" rel="noopener" appearance="plain" size="large">
+              <wa-icon
+                name="linkedin"
+                family="brands"
+                label="linkedin">
+              </wa-icon>
+            </wa-button>
+        </div>
+        <div class="wa-split">
+          <p>Built by Anthony Gardés w/ 
+            <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>, 
+            <a href="https://www.11ty.dev/" target="_blank" rel="noopener">Webawesome</a>, and
+            <a href="https://azure.microsoft.com/en-us" target="_blank" rel="noopener">Microsoft Azure</a>.
+            <p>© 2026 All rights reserved.</p>
+          </p>
+        </div>
+      </footer>
+    </wa-page>
+  </body>
