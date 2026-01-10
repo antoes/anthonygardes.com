@@ -42,4 +42,7 @@ Give it some time to deploy then once the resource is ready select view your sit
 ## Optional (but fun!)
 If you are feeling adventurous try editing some of the html from your forked repository with your favorite IDE or editing it directly on the web and watch your CI/CD pipeline in action. Once changes are comitted to your main branch your static website will update automatically! 
 
+## Cleanup
+Once your done exploring your new static web app goto your resource group and delete the whole group (this will delete anyhting inside that resource group).
+
 I hope you learned something valuable on this one! If you have any questions, get hung up, or just wanna say hi feel free to drop me a message!
