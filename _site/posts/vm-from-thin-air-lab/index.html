@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/bundle.css">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='100'>🤖</text></svg>"
+    />
+    <title>Anthony Gardes</title>
+  </head>
+  <body>
+    <wa-page>
+      <header slot="header" style="display: flex; justify-content: center;">
+				<div class="wa-stack wa-align-items-center">
+					<div class="wa-cluster wa-gap-l">
+						<wa-button appearance="plain" href="/">Home</wa-button>
+            <wa-button appearance="plain" href="/contact">Contact</wa-button>
+            <wa-button appearance="plain" href="/posts">Posts</wa-button>
+					</div>
+				</div>
+			</header>
+      <main id="content" style="max-width: 90ch; margin: 0 auto;">
+        <div class="wa-stack wa-gap-m" style="max-width: 90ch; margin: 0 auto;">
+    <div class="wa-stack">
+        <div class="wa-grid wa-gap-2xl">
+            <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
+                <img
+                src="./vmFromThinAir.webp"
+                alt="image of a wizard conjuring a virtual machine from thin air"
+                />
+            </div>
+            <div class="wa-stack">
+                <h2>☁️ Azure Lab: Summoning a VM from Thin Air</h2>
+                <p>by: Anthony Gardés</p>
+                <wa-format-date date="Sun Jan 18 2026 16:00:00 GMT-0800 (Pacific Standard Time)" month="long" day="numeric" year="numeric"></wa-format-date>
+            <div class="wa-cluster wa-gap-2xs">
+<p><wa-tag size="small" appearance="filled"><a href="/tags/azure/"># azure</a></wa-tag></p>
+<p><wa-tag size="small" appearance="filled"><a href="/tags/labs/"># labs</a></wa-tag></p>
+<p></div>
+</div>
+</div></p>
+</div>
+<h2>Creating the VM</h2>
+<p>Create a Virtual Machine, this will create all the required resources for the VM makle sure to use the following in the basics tab:</p>
+<div class="wa-frame" slot="media" style="min-height: 50px; max-height: 100px; aspect-ratio: 1:1;">
+        <img src="./virtualMachineIcon.webp" alt="Virtual Machine icon" />
+</div>
+<ul>
+<li><strong>Resource Group:</strong> rg-yout-vm-lab-12323</li>
+<li><strong>Virtual machine name:</strong> yourvmname</li>
+<li><strong>Region:</strong> West US 2</li>
+<li><strong>Zone Options:</strong> Azure-selected zone (preview)</li>
+<li><strong>Image:</strong> Ubuntu Server 24.04 LTS</li>
+<li><strong>VM architechture:</strong> x64</li>
+<li><strong>Size:</strong> Standard_B1 - 1vcpu, 1GiB memory (free service eligible)</li>
+<li><strong>Authentication type:</strong> SSH public key</li>
+<li><strong>Username:</strong> labDemo</li>
+<li><strong>Allow selecterd ports:</strong> SSH (22)</li>
+</ul>
+<p>The other tabs can be left as default, then select Review + create. You will be prompted here, or after create to download your private key, make sure to download this and save it to a location that is easily accessible, once downloaded your VM will begin to spin up out of thin air! Once deployment is done, head over to the resource group you defined earlier and look at all the VM resources that have spun up! you should have the following items in your resource group:</p>
+<ul>
+<li>Virtual machine</li>
+<li>Public IP address</li>
+<li>Network security group</li>
+<li>Virtual network</li>
+<li>Network interface</li>
+<li>SSH key</li>
+<li>Disk</li>
+</ul>
+<p>Pretty sweet, right?</p>
+<h2>Check out your VM</h2>
+<p>Click ino the virtual machine resource and check out the overview tab for a bit. Once your have taken a mental snapshot look under the netowking section and notice the public IP address. Copy that address, then open up a terminal on your computer and try pinging that address, it should time out and you shouldent have access to ping it, any guesses on why?</p>
+<div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
+        <img src="./pingFail.webp" alt="terminal ping failed" />
+</div>
+Head back to your lab resource group, then select the Network security group and take a look at the inbound and outbound rules. We have only allowed SSH so far, ICMP is not allowed. Let’s make that change. Select the Settings blade then select inbound rules, then hit add. Under Protocol select ICMPv4 then name it AllowICMPv4In (make sure these are descriptive), and change the destination port ranges to * (lab use only!), then select save. Then repeat on the outbound rules, since we will need to get a response. Make sure the name is AllowICMPv4Out, for the outbound rule. Confirm your overview looks something like this:
+<div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
+        <img src="./ICMPRules.webp" alt="ICMP rules list on Azure NSG" />
+</div>
+<p>Now try the ping on your public address now, the new NSG rules should allow the pings. You are successfully comunicating with your cloud VM from your local machine, how cool is that?</p>
+<div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
+        <img src="./pingSuccess.webp" alt="terminal ping success screenshot" />
+</div>
+<p>The next bits are optional, but just as fun if your want to get a bit more hands on with some SSH and getting a basic web server up on your new cloud VM.</p>
+<h2>Set Permissions (Linux/macOS only)</h2>
+<p>The private key file must have restrictive permissions for security.</p>
+<pre><code>chmod 400 /path/to/your-private-key.pem
+</code></pre>
+<h2>Connect via SSH</h2>
+<p>Open your terminal and run the following command, replacing the placeholders with your specific details:</p>
+<pre><code>ssh -i /path/to/your-private-key.pem labDemo@your_public_ip_address
+</code></pre>
+<ul>
+<li><strong>-i</strong> <strong>flag:</strong> Specifies the path to your identity file (private key).</li>
+<li><strong>your_username</strong>: The admin username for the Azure VM (labDemo if following along)</li>
+<li><strong>public_ip_address</strong>: The public IP address of your Azure VM.</li>
+</ul>
+<h2>First-time Connection</h2>
+<p>When connecting for the first time, you may be prompted to confirm the host's authenticity. Type yes and press Enter to continue. If you set a passphrase for your key, enter it when prompted. Now your actually in your machine from your local machine. Next we will setup a simple static web server.</p>
+<h2>Install Apache</h2>
+<div class="wa-flank:start">
+    <pre>sudo apt update</pre>
+    <wa-copy-button value="sudo apt update"></wa-copy-button>
+</div>
+<div class="wa-flank:start">
+    <pre>sudo apt install apache2 -y</pre>
+    <wa-copy-button value="sudo apt install apache2 -y"></wa-copy-button>
+</div>
+<p>Verify the Install of apache</p>
+<div class="wa-flank:start">
+    <pre>sudo systemctl status apache2</pre>
+    <wa-copy-button value="sudo systemctl status apache2"></wa-copy-button>
+</div>
+<p>Once verified were almost there! We will need to head back to the Azure portal then select your network security gateway (NSG). We need to add some more security rules to allow the HTTP requests.</p>
+<h2>Final Rules</h2>
+<p>Head to the Settings blade of your network security group and add a new inbound rule, change the Service to HTTP and allow. Name this rule AllowHTTPIn. Next do the outbound seurity rule, select HTTP for ther service then name it AllowHTTPOut. This should looks like your rules list from the Overview section:</p>
+<div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
+        <img src="./finalOverviewRules.webp" alt="Overview final inbound and outbound NSG Rules" />
+</div>
+<p>Now select your public IP address and paste it in a browser, you should be met with something like this:</p>
+<div class="wa-frame" slot="media" style="min-height: 150px; max-height: 512px; aspect-ratio: 1:1;">
+        <img src="./apacheDefaultSuccess.webp" alt="apache 2 successful web server" />
+</div>
+<p>🎉 Congratulations you just made a Cloud VM that hosts static websites via apache2, from pretty much thin air.</p>
+<h2>Cleanup</h2>
+<p>Once you are done with the project don’t forget to clean everything up to avoid any exorbant charges or usage on your account. The quickest and easiest way to do this is go to delete your resource group, all the items in the resource group will be deleted all at once.</p>
+<p>Last note, these configurations are only for demo purposes and for undestanding concepts at a base level, please do not use these configurations for anything outside of labbing. I hope you learned something and enjoyed this project.</p>
+
+      </main>
+      <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
+        <div class="wa-cluster wa-gap-s">
+          <wa-button href="https://www.linkedin.com/in/anthonygardes" target="_blank" rel="noopener" appearance="plain" size="large">
+              <wa-icon
+                name="linkedin"
+                family="brands"
+                label="linkedin">
+              </wa-icon>
+            </wa-button>
+        </div>
+        <div class="wa-split">
+          <p>Built by Anthony Gardés w/ 
+            <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>, 
+            <a href="https://webawesome.com/" target="_blank" rel="noopener">Webawesome</a>, and
+            <a href="https://azure.microsoft.com/en-us" target="_blank" rel="noopener">Microsoft Azure</a>.
+            <p>© 2026 All rights reserved.</p>
+          </p>
+        </div>
+      </footer>
+    </wa-page>
+  </body>
