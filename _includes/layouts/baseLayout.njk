@@ -23,10 +23,13 @@
             <wa-button appearance="plain" href="/">Home</wa-button>
             <wa-button appearance="plain" href="/contact">Contact</wa-button>
             <wa-button appearance="plain" href="/posts">Posts</wa-button>
+            <wa-button appearance="plain" id="searchBtn" aria-label="Search">
+              <wa-icon name="magnifying-glass" label="Search"></wa-icon>
+            </wa-button>
           </div>
         </div>
       </header>
-      <main id="content" style="max-width: 90ch; margin: 0 auto;">
+      <main id="content" data-pagefind-body style="max-width: 90ch; margin: 0 auto;">
         {{content | safe}}
       </main>
       <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
@@ -49,5 +52,74 @@
         </div>
       </footer>
     </wa-page>
+
+    <wa-dialog label="Search" id="searchDialog" style="--width: 600px;" data-pagefind-ignore>
+      <wa-input id="searchInput" placeholder="Search posts…" size="large" clearable autocomplete="off">
+        <wa-icon slot="prefix" name="magnifying-glass"></wa-icon>
+      </wa-input>
+      <div id="searchResults" class="wa-stack wa-gap-s" style="margin-top: 1rem;"></div>
+    </wa-dialog>
+
+    <script>
+      const searchBtn = document.getElementById('searchBtn');
+      const searchDialog = document.getElementById('searchDialog');
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+      let pagefind;
+
+      async function openSearch() {
+        searchDialog.show();
+        if (!pagefind) {
+          try {
+            pagefind = await import('/pagefind/pagefind.js');
+          } catch {
+            searchResults.innerHTML = '<p class="wa-caption-m">Search index not found — run <code>npm run build</code> first.</p>';
+            return;
+          }
+        }
+        searchInput.focus();
+      }
+
+      searchBtn.addEventListener('click', openSearch);
+
+      // Cmd+K / Ctrl+K shortcut
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          openSearch();
+        }
+      });
+
+      // Clear results when dialog closes so it opens fresh next time
+      searchDialog.addEventListener('wa-after-hide', () => {
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+      });
+
+      let debounce;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounce);
+        debounce = setTimeout(async () => {
+          const query = e.target.value.trim();
+          if (!query) { searchResults.innerHTML = ''; return; }
+
+          const search = await pagefind.search(query);
+          if (!search.results.length) {
+            searchResults.innerHTML = '<p class="wa-caption-m">No results found.</p>';
+            return;
+          }
+
+          const data = await Promise.all(search.results.slice(0, 8).map(r => r.data()));
+          searchResults.innerHTML = data.map(r => `
+            <a href="${r.url}" style="text-decoration: none; display: block;">
+              <wa-card>
+                <strong>${r.meta.title || 'Untitled'}</strong>
+                <p class="wa-caption-m" style="margin: 0.25rem 0 0;">${r.excerpt}</p>
+              </wa-card>
+            </a>
+          `).join('');
+        }, 250);
+      });
+    </script>
   </body>
 </html>
