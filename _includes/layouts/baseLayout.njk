@@ -17,16 +17,24 @@
   </head>
   <body>
     <wa-page>
-      <header slot="header" style="display: flex; justify-content: center;">
-        <div class="wa-stack wa-align-items-center">
-          <div class="wa-cluster wa-gap-l">
-            <wa-button appearance="plain" href="/">Home</wa-button>
-            <wa-button appearance="plain" href="/contact">Contact</wa-button>
-            <wa-button appearance="plain" href="/posts">Posts</wa-button>
-            <wa-button appearance="plain" id="searchBtn" aria-label="Search">
-              <wa-icon name="magnifying-glass" label="Search"></wa-icon>
-            </wa-button>
-          </div>
+      <header slot="header" style="display: flex; justify-content: center; width: 100%;">
+        <!-- Desktop nav -->
+        <div class="nav-desktop wa-cluster wa-gap-l">
+          <wa-button appearance="plain" href="/">Home</wa-button>
+          <wa-button appearance="plain" href="/contact">Contact</wa-button>
+          <wa-button appearance="plain" href="/posts">Posts</wa-button>
+          <wa-button appearance="plain" id="searchBtn" aria-label="Search">
+            <wa-icon name="magnifying-glass" label="Search"></wa-icon>
+          </wa-button>
+        </div>
+        <!-- Mobile nav -->
+        <div class="nav-mobile wa-split" style="width: 100%; padding: 0 var(--wa-space-m); align-items: center;">
+          <wa-button appearance="plain" id="mobileMenuBtn" aria-label="Open menu">
+            <wa-icon name="bars" label="Menu"></wa-icon>
+          </wa-button>
+          <wa-button appearance="plain" id="searchBtnMobile" aria-label="Search">
+            <wa-icon name="magnifying-glass" label="Search"></wa-icon>
+          </wa-button>
         </div>
       </header>
       <main id="content" data-pagefind-body style="max-width: 90ch; margin: 0 auto;">
@@ -52,6 +60,16 @@
         </div>
       </footer>
     </wa-page>
+
+    <wa-drawer id="mobileNav" placement="start" label="Menu" data-pagefind-ignore>
+      <nav class="wa-stack wa-gap-xs">
+        <wa-button appearance="plain" href="/" size="large">Home</wa-button>
+        <wa-divider></wa-divider>
+        <wa-button appearance="plain" href="/posts" size="large">Posts</wa-button>
+        <wa-divider></wa-divider>
+        <wa-button appearance="plain" href="/contact" size="large">Contact</wa-button>
+      </nav>
+    </wa-drawer>
 
     <wa-dialog label="Search" id="searchDialog" style="--width: 600px;" data-pagefind-ignore>
       <wa-input id="searchInput" placeholder="Search posts…" size="large" clearable autocomplete="off">
@@ -81,6 +99,14 @@
       }
 
       searchBtn.addEventListener('click', openSearch);
+      document.getElementById('searchBtnMobile').addEventListener('click', openSearch);
+
+      // Mobile nav drawer
+      const mobileNav = document.getElementById('mobileNav');
+      document.getElementById('mobileMenuBtn').addEventListener('click', () => mobileNav.show());
+      mobileNav.addEventListener('click', (e) => {
+        if (e.target.closest('wa-button[href]')) mobileNav.hide();
+      });
 
       // Cmd+K / Ctrl+K shortcut
       document.addEventListener('keydown', (e) => {

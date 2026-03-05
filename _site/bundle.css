@@ -3,9 +3,17 @@ a:hover {
 }
 
 wa-page::part(navigation-toggle) {
-display: none;
+    display: none;
 }
 
 wa-page::part(navigation) {
-display: none;
+    display: none;
+}
+
+/* Responsive nav */
+.nav-mobile { display: none; }
+
+@media (max-width: 640px) {
+    .nav-desktop { display: none; }
+    .nav-mobile { display: flex; }
 }
