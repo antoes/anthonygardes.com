@@ -8,7 +8,7 @@ module.exports = function (eleventyConfig) {
 	// Images with loading="eager" set explicitly will not be overridden.
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
 		formats: ["webp", "jpeg"],
-		widths: [400, 800, 1200, "auto"],
+		widths: [200, 400, 800, 1200, "auto"],
 		transformOnRequest: false, // always generate images at build time, not on-demand
 		htmlOptions: {
 			imgAttributes: {
