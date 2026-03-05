@@ -28,8 +28,8 @@
         </div>
         <div class="wa-frame wa-border-radius-m" style="width: 10ch;">
         <img
-          src="{{ post.url}}/{{post.data.hero}}"
-          alt="{{post.data.heroAlt}}"
+          src="{{ post.url }}{{ post.data.hero | replace("./", "") }}"
+          alt="{{ post.data.heroAlt }}"
         />
       </div>
     </article>

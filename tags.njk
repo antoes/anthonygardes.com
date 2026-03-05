@@ -1,10 +1,10 @@
 ---
 layout: /layouts/baseLayout.njk
 pagination:
-  data: collections
+  data: collections.tagList
   size: 1
   alias: tag
-permalink: /tags/{{ tag }}/
+permalink: /tags/{{ tag | slugify }}/
 ---
 
 <h1>Tagged “{{ tag }}”</h1>

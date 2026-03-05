@@ -5,6 +5,7 @@
                 <img
                 src="{{ hero }}"
                 alt="{{ heroAlt }}"
+                loading="eager"
                 />
             </div>
             <div class="wa-stack">
@@ -17,6 +18,7 @@
                         <wa-tag size="small" appearance="filled"><a href="/tags/{{ tag | slugify }}/"># {{ tag }}</a></wa-tag>
                     {% endif %}
                 {% endfor %}
+            </div>
             </div>
         </div>
     </div>
