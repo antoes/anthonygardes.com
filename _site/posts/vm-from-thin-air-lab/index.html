@@ -49,7 +49,7 @@
     <div class="wa-stack">
         <div class="wa-grid wa-gap-2xl">
             <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
-                <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/Iz4Xro5NBd-1024.webp 1024w"><img loading="eager" decoding="async" src="/posts/vm-from-thin-air-lab/Iz4Xro5NBd-1024.jpeg" alt="image of a wizard conjuring a virtual machine from thin air" width="1024" height="1024"></picture>
+                <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/Iz4Xro5NBd-400.webp 400w, /posts/vm-from-thin-air-lab/Iz4Xro5NBd-800.webp 800w, /posts/vm-from-thin-air-lab/Iz4Xro5NBd-1024.webp 1024w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="eager" decoding="async" src="/posts/vm-from-thin-air-lab/Iz4Xro5NBd-400.jpeg" alt="image of a wizard conjuring a virtual machine from thin air" width="1024" height="1024" srcset="/posts/vm-from-thin-air-lab/Iz4Xro5NBd-400.jpeg 400w, /posts/vm-from-thin-air-lab/Iz4Xro5NBd-800.jpeg 800w, /posts/vm-from-thin-air-lab/Iz4Xro5NBd-1024.jpeg 1024w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
             </div>
             <div class="wa-stack">
                 <h2>☁️ Azure Lab: Summoning a VM from Thin Air</h2>
@@ -97,15 +97,15 @@
 <h2>Check out your VM</h2>
 <p>Click into the virtual machine resource and check out the overview tab for a bit. Once you have taken a mental snapshot, look under the networking section and notice the public IP address. Copy that address, then open a terminal on your computer and try pinging it. It should time out, and you shouldn’t have access to ping it. Any guesses on why?</p>
 <div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
-        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/31yaFYq9yq-527.webp 527w"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/31yaFYq9yq-527.jpeg" alt="terminal ping failed" width="527" height="383"></picture>
+        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/31yaFYq9yq-400.webp 400w, /posts/vm-from-thin-air-lab/31yaFYq9yq-527.webp 527w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/31yaFYq9yq-400.jpeg" alt="terminal ping failed" width="527" height="383" srcset="/posts/vm-from-thin-air-lab/31yaFYq9yq-400.jpeg 400w, /posts/vm-from-thin-air-lab/31yaFYq9yq-527.jpeg 527w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
 </div>
 Head back to your lab resource group, then select the Network security group and take a look at the inbound and outbound rules. We have only allowed SSH so far; ICMP is not allowed. Let’s make that change. Select the Settings blade, then select Inbound Rules, then hit Add. Under Protocol, select ICMPv4, then name it AllowICMPv4In (make sure these are descriptive), and change the destination port ranges to * (lab use only!), then select save. Then repeat for the outbound rules, since we need a response. Make sure the outbound rule name is AllowICMPv4Out. Confirm your overview looks something like this:
 <div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
-        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/jWjwuNC_K6-973.webp 973w"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/jWjwuNC_K6-973.jpeg" alt="ICMP rules list on Azure NSG" width="973" height="371"></picture>
+        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/jWjwuNC_K6-400.webp 400w, /posts/vm-from-thin-air-lab/jWjwuNC_K6-800.webp 800w, /posts/vm-from-thin-air-lab/jWjwuNC_K6-973.webp 973w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/jWjwuNC_K6-400.jpeg" alt="ICMP rules list on Azure NSG" width="973" height="371" srcset="/posts/vm-from-thin-air-lab/jWjwuNC_K6-400.jpeg 400w, /posts/vm-from-thin-air-lab/jWjwuNC_K6-800.jpeg 800w, /posts/vm-from-thin-air-lab/jWjwuNC_K6-973.jpeg 973w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
 </div>
 <p>Now try pinging your public address; the new NSG rules should allow it. You are successfully communicating with your cloud VM from your local machine. How cool is that?</p>
 <div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
-        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/-ZRC0jHwjx-529.webp 529w"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/-ZRC0jHwjx-529.jpeg" alt="terminal ping success screenshot" width="529" height="306"></picture>
+        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/-ZRC0jHwjx-400.webp 400w, /posts/vm-from-thin-air-lab/-ZRC0jHwjx-529.webp 529w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/-ZRC0jHwjx-400.jpeg" alt="terminal ping success screenshot" width="529" height="306" srcset="/posts/vm-from-thin-air-lab/-ZRC0jHwjx-400.jpeg 400w, /posts/vm-from-thin-air-lab/-ZRC0jHwjx-529.jpeg 529w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
 </div>
 <p>The next bits are optional, but just as fun if you want to get a bit more hands-on with SSH and set up a basic web server on your new cloud VM.</p>
 <h2>Set Permissions (Linux/macOS only)</h2>
@@ -141,11 +141,11 @@ Head back to your lab resource group, then select the Network security group and
 <h2>Final Rules</h2>
 <p>Head to the Settings blade of your network security group, add a new inbound rule, set the Service to HTTP, and allow. Name this rule AllowHTTPIn. Next, do the outbound security rule, select HTTP for the service, then name it AllowHTTPOut. This should look like your rules list from the Overview section:</p>
 <div class="wa-frame" slot="media" style="min-height: 150px; max-height: 500px; aspect-ratio: auto;">
-        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/xyLSNIcgeY-977.webp 977w"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/xyLSNIcgeY-977.jpeg" alt="Overview final inbound and outbound NSG Rules" width="977" height="475"></picture>
+        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/xyLSNIcgeY-400.webp 400w, /posts/vm-from-thin-air-lab/xyLSNIcgeY-800.webp 800w, /posts/vm-from-thin-air-lab/xyLSNIcgeY-977.webp 977w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/xyLSNIcgeY-400.jpeg" alt="Overview final inbound and outbound NSG Rules" width="977" height="475" srcset="/posts/vm-from-thin-air-lab/xyLSNIcgeY-400.jpeg 400w, /posts/vm-from-thin-air-lab/xyLSNIcgeY-800.jpeg 800w, /posts/vm-from-thin-air-lab/xyLSNIcgeY-977.jpeg 977w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
 </div>
 <p>Now select your public IP address and paste it in a browser, you should be met with something like this:</p>
 <div class="wa-frame" slot="media" style="min-height: 150px; max-height: 512px; aspect-ratio: 1:1;">
-        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/0HSEQNzkI0-512.webp 512w"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/0HSEQNzkI0-512.jpeg" alt="apache 2 successful web server" width="512" height="512"></picture>
+        <picture><source type="image/webp" srcset="/posts/vm-from-thin-air-lab/0HSEQNzkI0-400.webp 400w, /posts/vm-from-thin-air-lab/0HSEQNzkI0-512.webp 512w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/vm-from-thin-air-lab/0HSEQNzkI0-400.jpeg" alt="apache 2 successful web server" width="512" height="512" srcset="/posts/vm-from-thin-air-lab/0HSEQNzkI0-400.jpeg 400w, /posts/vm-from-thin-air-lab/0HSEQNzkI0-512.jpeg 512w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
 </div>
 <p>🎉 Congratulations you just made a Cloud VM that hosts static websites via Apache2, from pretty much thin air.</p>
 <h2>Cleanup</h2>
