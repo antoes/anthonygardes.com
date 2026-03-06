@@ -107,6 +107,16 @@ We’re almost there; all we need to do is connect our cloud infrastructure to o
   - **Connection Mode:** Default
 - Review + Create, then Create.
 
+Once the connection is created, access the resource, and we will adjust some settings to harden it a bit. Goto settings, then configuration. Change the IPsec / IKE policy to custom, then match these configurations:
+<div class="wa-frame" slot="media" style="min-height: 100px; max-height: 500px;aspect-ratio: auto;">
+        <img src="./azure-connection-harden.png" alt="Custom IPsec / IKE policy on Azure" />
+    </div>
+
+<wa-callout>
+  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+   Make sure these configurations match your on-prem device in the next step.
+</wa-callout>
+
 ## On-Site Configuration
 This will differ if using a device other than a UniFi gateway device, but I will do my best to explain the concepts along the way, which should translate across devices.
 
@@ -122,11 +132,11 @@ The key details for configuration are the following:
 - **Local IP:** This is your on-site public IP address (WAN). If you are unsure, you can use [ipchicken](https://www.ipchicken.com/) 
 - **Advanced Options:**
   - **Key Exchange:** Select IKEv2
-  - **Hash:** SHA1
-  - **IKE DH Group:** 2
+  - **Hash:** SHA256
+  - **IKE DH Group:** 14
 
 <wa-details summary="If you are on UniFi, feel free to check your configs against mine.">
-        <img src="./unifi-VPN-settings.webp" alt="UniFi site-to-site VPN settings" />
+        <img src="./unifi-vpn-settings.png" alt="UniFi site-to-site VPN settings" />
         <img src="./unifi-remote-device.webp" alt="UniFi site-to-site remote device settings" />
 </wa-details>
 
