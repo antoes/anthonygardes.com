@@ -1,5 +1,6 @@
 ---
 layout: /layouts/baseLayout.njk
+pageType: tag
 pagination:
   data: collections.tagList
   size: 1
@@ -7,7 +8,7 @@ pagination:
 permalink: /tags/{{ tag | slugify }}/
 ---
 
-<h1>Tagged “{{ tag }}”</h1>
+<h1 data-pagefind-meta=”title”>{{ tag }}</h1>
 <div class="wa-stack wa-gap-s">
 {% set taglist = collections[ tag ] %}
 {% for post in taglist | reverse %}

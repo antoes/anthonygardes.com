@@ -21,7 +21,7 @@
     </style>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em'
         font-size='100'>🤖</text></svg>">
-    <title>Anthony Gardes</title>
+    <title>My Homepage | Anthony Gardes</title>
   </head>
   <body class="wa-cloak">
     <wa-page>
@@ -203,21 +203,51 @@
           const query = e.target.value.trim();
           if (!query) { searchResults.innerHTML = ''; return; }
 
-          const search = await pagefind.search(query);
-          if (!search.results.length) {
+          const [postSearch, tagSearch] = await Promise.all([
+            pagefind.search(query, { filters: { type: "post" } }),
+            pagefind.search(query, { filters: { type: "tag" } })
+          ]);
+
+          const hasPosts = postSearch.results.length > 0;
+          const hasTags = tagSearch.results.length > 0;
+
+          if (!hasPosts && !hasTags) {
             searchResults.innerHTML = '<p class="wa-caption-m">No results found.</p>';
             return;
           }
 
-          const data = await Promise.all(search.results.slice(0, 8).map(r => r.data()));
-          searchResults.innerHTML = data.map(r => `
-            <a href="${r.url}" style="text-decoration: none; display: block;">
-              <wa-card>
-                <strong>${r.meta.title || 'Untitled'}</strong>
-                <p class="wa-caption-m" style="margin: 0.25rem 0 0;">${r.excerpt}</p>
-              </wa-card>
-            </a>
-          `).join('');
+          let html = '';
+
+          if (hasPosts) {
+            const postData = await Promise.all(postSearch.results.slice(0, 5).map(r => r.data()));
+            html += `<p class="wa-caption-s" style="font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Posts</p>`;
+            html += postData.map(r => `
+              <a href="${r.url}" style="text-decoration:none;display:block;">
+                <wa-card>
+                  <strong>${r.meta.title || 'Untitled'}</strong>
+                  <p class="wa-caption-m" style="margin:0.25rem 0 0;">${r.meta.description || r.excerpt}</p>
+                </wa-card>
+              </a>
+            `).join('');
+          }
+
+          if (hasPosts && hasTags) {
+            html += '<wa-divider style="margin:0.75rem 0;"></wa-divider>';
+          }
+
+          if (hasTags) {
+            const tagData = await Promise.all(tagSearch.results.slice(0, 5).map(r => r.data()));
+            html += `<p class="wa-caption-s" style="font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Tags</p>`;
+            html += tagData.map(r => `
+              <a href="${r.url}" style="text-decoration:none;display:block;">
+                <wa-card>
+                  <strong>${r.meta.title || 'Untitled'}</strong>
+                </wa-card>
+              </a>
+            `).join('');
+          }
+
+          searchResults.innerHTML = html;
         }, 250);
       });
     </script>
