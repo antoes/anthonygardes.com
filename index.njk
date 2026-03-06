@@ -1,13 +1,24 @@
 ---
 layout: /layouts/baseLayout.njk
-title: 👋 I'm Anthony, explorer of all things creative and tech.
-blurb: 
+title: Anthony Gardes
+description: Personal site of Anthony Gardés — labs, projects, and creative work at the intersection of tech and creativity.
 ---
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Anthony Gardes",
+  "url": "https://www.anthonygardes.com",
+  "image": "https://www.anthonygardes.com/public/img/anthonyCard.webp",
+  "sameAs": ["https://www.linkedin.com/in/anthonygardes"],
+  "description": "Personal site of Anthony Gardés — labs, projects, and creative work at the intersection of tech and creativity."
+}
+</script>
 <div class="wa-stack wa-gap-m">
     <div class="wa-stack">
         <div class="wa-grid wa-gap-2xl">
           <div class="wa-stack">
-               <h2>{{ title }}</h2>
+               <h1>👋 I'm Anthony, explorer of all things creative and tech.</h1>
                 <p>Feel free to reach me anytime with quesitons, comments or projects you'd like to see 🙌</p>
                 <div class="wa-cluster wa-gap-xs">
                   <wa-button appearance="plain" href="/contact/" variant="neutral" size="medium">Send me a message <wa-icon slot="end" name="arrow-right" aria-hidden="true" library="default"></wa-icon></wa-button>
@@ -27,5 +38,9 @@ blurb:
 
 <div style="margin-top: 4rem;">
     <h2>Recent Posts</h2>
-    {% include "postslist.njk"%}
+    {% set postLimit = 3 %}
+    {% include "postslist.njk" %}
+    <div style="margin-top: 1.5rem; text-align: center;">
+        <wa-button href="/posts" variant="brand" appearance="filled-outlined">View all posts <wa-icon slot="end" name="arrow-right" aria-hidden="true"></wa-icon></wa-button>
+    </div>
 </div>

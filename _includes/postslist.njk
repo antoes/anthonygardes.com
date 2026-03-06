@@ -1,32 +1,25 @@
 <div class="wa-stack" style="max-width: 70ch; margin: 0 auto;">
-  <div class="wa-split">
-  </div>
-  <div class="wa-stack">
-    {% for post in collections.post  | reverse %}
+  {% for post in collections.post | reverse %}
+    {% if not postLimit or loop.index0 < postLimit %}
     <article class="wa-flank:end wa-align-items-center">
       <div class="wa-stack wa-gap-s wa-align-items-start">
         <h3 class="wa-heading-l">
           <a href="{{ post.url }}" class="wa-link-plain">{{ post.data.title }}</a>
         </h3>
-        <div class="wa-stack wa-gap-2xs">
-          <p class="wa-caption-m">
-            {{ post.data.description }}
-          </p>
-          <span class="wa-caption-s"
-            >by: <a href="#"
-              ><strong><em>{{ post.data.author }}</em></strong></a
-            ></span
-          >
-        </div>
+        <p>{{ post.data.description }}</p>
+        <span class="wa-caption-s" style="display:inline-flex;align-items:center;gap:0.25rem;color:var(--wa-color-neutral-600);">
+          <wa-icon name="calendar" style="font-size:0.85em;"></wa-icon>
+          <wa-format-date date="{{ post.date.toISOString() }}" month="long" day="numeric" year="numeric"></wa-format-date>
+        </span>
         <div class="wa-cluster wa-gap-2xs">
-        {% for tag in post.data.tags %}
-          {% if tag != "post" %} {# Optional: Exclude certain tags #}
+          {% for tag in post.data.tags %}
+            {% if tag != "post" %}
               <wa-tag size="small" appearance="filled"><a href="/tags/{{ tag | slugify }}/"># {{ tag }}</a></wa-tag>
-          {% endif %}
-        {% endfor %}
+            {% endif %}
+          {% endfor %}
         </div>
-        </div>
-        <div class="wa-frame wa-border-radius-m" style="width: 10ch;">
+      </div>
+      <div class="wa-frame wa-border-radius-m" style="width: 10ch; aspect-ratio: 1/1; flex-shrink: 0;">
         <img
           src="{{ post.url }}{{ post.data.hero | replace("./", "") }}"
           alt="{{ post.data.heroAlt }}"
@@ -35,6 +28,6 @@
       </div>
     </article>
     <wa-divider></wa-divider>
-    {% endfor %}
-  </div>
+    {% endif %}
+  {% endfor %}
 </div>
