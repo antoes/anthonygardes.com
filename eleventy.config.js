@@ -21,6 +21,12 @@ module.exports = function (eleventyConfig) {
 
 	// Tag collection that excludes internal 11ty keys so tag pages are only
 	// generated for real content tags (not "all" or "post").
+	// Format a Date object as YYYY-MM-DD for use in sitemap.njk
+	eleventyConfig.addFilter("isoDate", (date) => {
+		if (!date) return "";
+		return new Date(date).toISOString().slice(0, 10);
+	});
+
 	eleventyConfig.addCollection("tagList", function (collection) {
 		const excluded = new Set(["all", "post"]);
 		const tagSet = new Set();
@@ -31,6 +37,8 @@ module.exports = function (eleventyConfig) {
 		});
 		return [...tagSet].sort();
 	});
+
+	eleventyConfig.addPassthroughCopy("robots.txt");
 
 	// Copy `css/fonts/` to `_site/css/fonts/`
 	eleventyConfig.addPassthroughCopy("css/fonts");

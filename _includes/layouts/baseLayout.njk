@@ -11,6 +11,11 @@
     <meta property="og:description" content="{{ description or 'Labs, Projects, and Creative Work by Anthony Gardes' }}"/>
     <meta property="og:image" content="https://www.anthonygardes.com/public/img/anthonyCard.webp"/>
     <meta property="og:url" content="https://www.anthonygardes.com{{ page.url }}"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{% if title %}{{ title }} | Anthony Gardes{% else %}Anthony Gardes{% endif %}"/>
+    <meta name="twitter:description" content="{{ description or 'Labs, Projects, and Creative Work by Anthony Gardes' }}"/>
+    <meta name="twitter:image" content="https://www.anthonygardes.com/public/img/anthonyCard.webp"/>
+    <link rel="apple-touch-icon" href="/public/img/favicon.png"/>
     <script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous" defer></script>
     <style>
       .wa-cloak, .wa-cloak *, .wa-cloak *::before, .wa-cloak *::after { display: none !important; }
