@@ -5,7 +5,7 @@ description: "A lab exploring the deployment of a VM in the Azure cloud along wi
 hero: "./vmFromThinAir.webp"
 heroAlt: "image of a wizard conjuring a virtual machine from thin air"
 date: 2026-01-19
-lastModified: 2026-01-16
+lastModified: 2026-01-19
 tags: ["azure", "labs"]
 ---
 {% include "posttop.njk" %}
@@ -20,7 +20,7 @@ I wanted to create a lab that covers the basics of VM creation in Microsoft Azur
 
 Create a Virtual Machine; this will create all the required resources for the VM. Make sure to use the following in the basics tab:
 
-- **Resource Group:** rg-yout-vm-lab-12323
+- **Resource Group:** rg-your-vm-lab-12323
 - **Virtual machine name:** yourvmname
 - **Region:** West US 2
 - **Zone Options:** Azure-selected zone (preview)
@@ -29,7 +29,7 @@ Create a Virtual Machine; this will create all the required resources for the VM
 - **Size:** Standard_B1 - 1vcpu, 1GiB memory (free service eligible)
 - **Authentication type:** SSH public key
 - **Username:** labDemo
-- **Allow selecterd ports:** SSH (22)
+- **Allow selected ports:** SSH (22)
 
 The other tabs can be left as default, then select Review + create. You will be prompted to download your private key here, or after creating it. Make sure to download this and save it to a location that is easily accessible. Your VM will begin to spin up out of thin air! Once deployment is complete, head over to the resource group you defined earlier and check all the VMs that have spun up! You should have the following items in your resource group:
 - Virtual machine

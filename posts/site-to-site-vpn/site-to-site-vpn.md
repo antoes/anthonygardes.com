@@ -1,7 +1,7 @@
 ---
 title: "🌈 Azure Lab: Site-to-Site VPN"
 author: "Anthony Gardés"
-description: "A lab covering site-to-site VPN configuration concepts creating a hybrid envorionment with microsoft Azure."
+description: "A lab covering site-to-site VPN configuration concepts creating a hybrid environment with Microsoft Azure."
 hero: "./S2S-Hero-image.jpg"
 heroAlt: "image of a cloud connecting to a castle via a secure VPN connection "
 date: 2026-02-20
@@ -96,7 +96,7 @@ We’re almost there; all we need to do is connect our cloud infrastructure to o
 - **Basics**
   - **Resource Group:** RG-S2SVPN
   - **Connection Type:** Site-to-site (IPsec)
-  - **Name:** IPsec-S2S (or whaterver youd like)
+  - **Name:** IPsec-S2S (or whatever you'd like)
   - **Region:** West US (or match)
 - **Settings**
   - **Virtual network gateway:** VNG-S2S
@@ -163,8 +163,8 @@ I came across a few issues when configuring the connection, below are some steps
 - UniFi Specific Issue I ran into
   - I had to provision the VPN over the web, not the local app. It was not letting me create a VPN without a server locally, but it was able to do so from the web interface
   - Ensure PFS is disabled. I was getting inconsistent results with that turned on
-- Connection Reset. If the connection is unknown and your are 100% sure you have configured eveything correctly navigate to the connection, scroll down to help then select reset. This will reset/retry the vpn connection. IF this dosent work verify all other items check out.
-- Verify the Azure Public and ISP Address is correct. If you dont have a static IP, it’s possible your Public IP changed while going through the lab steps. Check [ipchicken](https://www.ipchicken.com/) and verify the IPs match.
+- Connection Reset. If the connection is unknown and your are 100% sure you have configured eveything correctly navigate to the connection, scroll down to help then select reset. This will reset/retry the vpn connection. If this doesn't work, verify all other items check out.
+- Verify the Azure Public and ISP Address is correct. If you don't have a static IP, it’s possible your Public IP changed while going through the lab steps. Check [ipchicken](https://www.ipchicken.com/) and verify the IPs match.
 - Verify your cloud network and local network IP space does not overlap
 
 ## Cleanup

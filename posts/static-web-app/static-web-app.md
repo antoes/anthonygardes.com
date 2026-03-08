@@ -9,7 +9,7 @@ lastModified: 2026-01-09
 tags: ["azure", "labs"]
 ---
 {% include "posttop.njk" %}
-While studying for the AZ104 I came across static web apps and thought, this would be perfect for hosting my personal site, and it’s free! So I decided to move my personal site off my self hosted solution and get it up and running on Azure. I’ll walk you thorugh the steps, on how to get up your first static site with this fun lab.
+While studying for the AZ104 I came across static web apps and thought, this would be perfect for hosting my personal site, and it’s free! So I decided to move my personal site off my self hosted solution and get it up and running on Azure. I’ll walk you through the steps, on how to get up your first static site with this fun lab.
 
 Prerequisites:
 - A <a href="https://github.com/" target="_blank">GitHub</a> account
@@ -23,7 +23,7 @@ Log into your your Microsoft Azure Account and create a resource group for you p
         <img src="./resourceGroup.png" alt="Microsoft Azure Resource Group" />
     </div>
 ## Step 3
-Jump into the resource group you just created, then hit the blue create button inside of the resource group. Seach for “static web app” then select and create, fill out the fields below.
+Jump into the resource group you just created, then hit the blue create button inside of the resource group. Search for “static web app” then select and create, fill out the fields below.
 - **Name:** enter a original name here.
 - **Plan type:** Free: For hobby or personal project
 - **Source:** GitHub
@@ -40,9 +40,9 @@ Give it some time to deploy then once the resource is ready select view your sit
             <img src="./deployment-complete.png" alt="Microsoft Azure Resource deployment complete" />
     </div>
 ## Optional (but fun!)
-If you are feeling adventurous try editing some of the html from your forked repository with your favorite IDE or editing it directly on the web and watch your CI/CD pipeline in action. Once changes are comitted to your main branch your static website will update automatically! 
+If you are feeling adventurous try editing some of the html from your forked repository with your favorite IDE or editing it directly on the web and watch your CI/CD pipeline in action. Once changes are committed to your main branch your static website will update automatically! 
 
 ## Cleanup
-Once your done exploring your new static web app goto your resource group and delete the whole group (this will delete anyhting inside that resource group).
+Once your done exploring your new static web app goto your resource group and delete the whole group (this will delete anything inside that resource group).
 
 I hope you learned something valuable on this one! If you have any questions, get hung up, or just wanna say hi feel free to drop me a message!
