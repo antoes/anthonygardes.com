@@ -55,6 +55,9 @@
       </header>
       <main id="content" data-pagefind-body{% if "post" in (tags or []) %} data-pagefind-filter="type:post"{% elif pageType %} data-pagefind-filter="type:{{ pageType }}"{% endif %} style="max-width: 90ch; margin: 0 auto;">
         {{content | safe}}
+        {% if "post" in (tags or []) %}
+          {% include "comments.njk" %}
+        {% endif %}
       </main>
       <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
         <div class="wa-cluster wa-gap-s">

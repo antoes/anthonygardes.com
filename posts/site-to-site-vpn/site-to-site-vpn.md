@@ -24,7 +24,7 @@ This lab will focus on creating a secure site-to-site VPN that can be used as a 
 - Shell/Terminal (optional)
 
 <wa-callout>
-  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+  <wa-icon slot="icon" name="circle-info"></wa-icon>
   If you do not have a static IP, you might want to consider using a service like noip (DDNS) so you can use a fully qualified domain name rather than your WAN IP, since ISPs utilize dynamic IPs. This is not a requirement, but it might be helpful if you plan to utilize this outside this lab.
 </wa-callout>
 
@@ -49,7 +49,7 @@ Next, we will create a **Virtual Network Gateway** with the following settings:
 - Click Review + create
 
 <wa-callout>
-  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+  <wa-icon slot="icon" name="circle-info"></wa-icon>
   Deploying a Virtual Network Gateway can take some time, so we'll move along and check back with deployment towards the end.
 </wa-callout>
 
@@ -113,7 +113,7 @@ Once the connection is created, access the resource, and we will adjust some set
     </div>
 
 <wa-callout>
-  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+  <wa-icon slot="icon" name="circle-info"></wa-icon>
    Make sure these configurations match your on-prem device in the next step.
 </wa-callout>
 

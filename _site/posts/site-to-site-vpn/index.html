@@ -86,7 +86,7 @@
 <li>Shell/Terminal (optional)</li>
 </ul>
 <wa-callout>
-  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+  <wa-icon slot="icon" name="circle-info"></wa-icon>
   If you do not have a static IP, you might want to consider using a service like noip (DDNS) so you can use a fully qualified domain name rather than your WAN IP, since ISPs utilize dynamic IPs. This is not a requirement, but it might be helpful if you plan to utilize this outside this lab.
 </wa-callout>
 <h2>Azure Configuration</h2>
@@ -112,7 +112,7 @@
 <li>Click Review + create</li>
 </ul>
 <wa-callout>
-  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+  <wa-icon slot="icon" name="circle-info"></wa-icon>
   Deploying a Virtual Network Gateway can take some time, so we'll move along and check back with deployment towards the end.
 </wa-callout>
 <p>Next, we are going to make a VM on our Azure side. We will use this later to confirm that our tunnel is working correctly and that our on-site and cloud resources can securely communicate over the internet.</p>
@@ -191,7 +191,7 @@
         <picture><source type="image/webp" srcset="/posts/site-to-site-vpn/Kt4Myqb90m-200.webp 200w, /posts/site-to-site-vpn/Kt4Myqb90m-400.webp 400w, /posts/site-to-site-vpn/Kt4Myqb90m-800.webp 800w, /posts/site-to-site-vpn/Kt4Myqb90m-1200.webp 1200w, /posts/site-to-site-vpn/Kt4Myqb90m-3456.webp 3456w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/site-to-site-vpn/Kt4Myqb90m-200.jpeg" alt="Custom IPsec / IKE policy on Azure" width="3456" height="1708" srcset="/posts/site-to-site-vpn/Kt4Myqb90m-200.jpeg 200w, /posts/site-to-site-vpn/Kt4Myqb90m-400.jpeg 400w, /posts/site-to-site-vpn/Kt4Myqb90m-800.jpeg 800w, /posts/site-to-site-vpn/Kt4Myqb90m-1200.jpeg 1200w, /posts/site-to-site-vpn/Kt4Myqb90m-3456.jpeg 3456w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
     </div>
 <wa-callout>
-  <wa-icon slot="icon" name="circle-info" variant="regular"></wa-icon>
+  <wa-icon slot="icon" name="circle-info"></wa-icon>
    Make sure these configurations match your on-prem device in the next step.
 </wa-callout>
 <h2>On-Site Configuration</h2>
@@ -243,6 +243,14 @@
 <h2>Cleanup</h2>
 <p>Once you are done tinkering, be sure to delete your resource group to avoid any costly bills. Hope you enjoyed this one and learned something valuable in this lab. 🙌</p>
 
+        
+          <section style="margin-top: 3rem;">
+  <wa-divider style="margin-bottom: 2rem;"></wa-divider>
+  <script src="https://giscus.app/client.js" data-repo="antoes/anthonygardes.com" data-repo-id="R_kgDOQoz7Xg" data-category="Announcements" data-category-id="DIC_kwDOQoz7Xs4C3_t2" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="https://www.anthonygardes.com/public/giscus-theme.css" data-lang="en" crossorigin="anonymous" async="">
+  </script>
+</section>
+
+        
       </main>
       <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
         <div class="wa-cluster wa-gap-s">
