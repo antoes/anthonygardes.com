@@ -24,9 +24,9 @@ This lab covers a pretty solid chunk of CCNA-related material, along with a coup
 
 Below is the unconfigured starting point for this lab. If you get stuck, I'll have a completed version of this lab at the end of this post, along with some troubleshooting tips.
 
-<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./VOIP-Lab-Start">
+<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./VOIP-Lab-Start.pkt">
   <wa-icon slot="start" name="download"></wa-icon>
-  VoIP Lab Start
+  VOIP-Lab-Start.pkt
 </wa-button>
 
 <div class="wa-frame" style="min-height: 100px; max-height: 500px; aspect-ratio: auto;">
@@ -222,9 +222,9 @@ When building this out, I ran into a couple of issues initially. I wanted to sha
 - This lab has no ACLs; you should be able to use ping and traceroute to troubleshoot and pinpoint issues.
 - **Routing:** We rely on OSPF to handle a large portion of routing, ensure OSPF forms adjacencies, and ensure that routing tables contain all necessary routes, including loopback routes. R1's loopback can easily be overlooked when configuring OSPF in this lab.
 
-<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./VOIP-Lab-Competed">
+<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./VOIP-Lab-Competed.pkt">
   <wa-icon slot="start" name="download"></wa-icon>
-  Completed Lab
+  VOIP-Lab-Competed.pkt
 </wa-button>
 <br></br>
 If you tried this lab or got hung up anywhere, please feel free to shoot me an email or leave a message below! The comments section is a newer feature. I would love to hear your thoughts on the feature and the lab!
