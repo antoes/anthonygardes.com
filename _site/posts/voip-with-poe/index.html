@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A mid-to-advanced CCNA lab that brings VoIP, PoE, EtherChannels, and OSPF together in one topology. One of my favorites.">
+    <meta name="author" content="Anthony Gardes">
+    <link rel="canonical" href="https://www.anthonygardes.com/posts/voip-with-poe/">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="📞 Networking Lab: Hold Please…VoIP &amp; PoE | Anthony Gardes">
+    <meta property="og:description" content="A mid-to-advanced CCNA lab that brings VoIP, PoE, EtherChannels, and OSPF together in one topology. One of my favorites.">
+    <meta property="og:image" content="https://www.anthonygardes.com/public/img/anthonyCard.webp">
+    <meta property="og:url" content="https://www.anthonygardes.com/posts/voip-with-poe/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="📞 Networking Lab: Hold Please…VoIP &amp; PoE | Anthony Gardes">
+    <meta name="twitter:description" content="A mid-to-advanced CCNA lab that brings VoIP, PoE, EtherChannels, and OSPF together in one topology. One of my favorites.">
+    <meta name="twitter:image" content="https://www.anthonygardes.com/public/img/anthonyCard.webp">
+    <link rel="apple-touch-icon" href="/public/img/favicon.png">
+    <script src="https://kit.webawesome.com/2b5f5fbfa4b141d0.js" crossorigin="anonymous" defer=""></script>
+    <style>
+      .wa-cloak, .wa-cloak *, .wa-cloak *::before, .wa-cloak *::after { display: none !important; }
+      a:hover { color: #FF8B57; }
+      wa-page::part(navigation-toggle) { display: none; }
+      wa-page::part(navigation) { display: none; }
+      .nav-mobile { display: none; }
+      @media (max-width: 640px) {
+        .nav-desktop { display: none; }
+        .nav-mobile { display: flex; }
+      }
+    </style>
+    <link rel="icon" href="/public/img/favicon.png" type="image/png">
+    <title>📞 Networking Lab: Hold Please…VoIP &amp; PoE | Anthony Gardes</title>
+  </head>
+  <body class="wa-cloak">
+    <wa-page>
+      <header slot="header" style="display: flex; justify-content: center; width: 100%;">
+        <!-- Desktop nav -->
+        <div class="nav-desktop wa-cluster wa-gap-l">
+          <wa-button appearance="plain" href="/">Home</wa-button>
+          <wa-button appearance="plain" href="/contact">Contact</wa-button>
+          <wa-button appearance="plain" href="/posts">Posts</wa-button>
+          <wa-button appearance="plain" id="searchBtn" aria-label="Search">
+            <wa-icon name="magnifying-glass" label="Search"></wa-icon>
+          </wa-button>
+        </div>
+        <!-- Mobile nav -->
+        <div class="nav-mobile wa-split" style="width: 100%; padding: 0 var(--wa-space-m); align-items: center;">
+          <wa-button appearance="plain" data-drawer="open mobileNav" aria-label="Open menu">
+            <wa-icon name="bars" label="Menu"></wa-icon>
+          </wa-button>
+          <wa-button appearance="plain" id="searchBtnMobile" aria-label="Search">
+            <wa-icon name="magnifying-glass" label="Search"></wa-icon>
+          </wa-button>
+        </div>
+      </header>
+      <main id="content" data-pagefind-body="" data-pagefind-filter="type:post" style="max-width: 90ch; margin: 0 auto;">
+        <p data-pagefind-meta="description" hidden="">A mid-to-advanced CCNA lab that brings VoIP, PoE, EtherChannels, and OSPF together in one topology. One of my favorites.</p>
+<div class="wa-stack wa-gap-m" style="max-width: 90ch; margin: 0 auto;">
+    <div class="wa-stack">
+        <div class="wa-grid wa-gap-2xl">
+            <div class="wa-frame wa-border-radius-l" style="aspect-ratio: 1/1;">
+                <picture><source type="image/webp" srcset="/posts/voip-with-poe/rz_9cmVPMt-200.webp 200w, /posts/voip-with-poe/rz_9cmVPMt-400.webp 400w, /posts/voip-with-poe/rz_9cmVPMt-800.webp 800w, /posts/voip-with-poe/rz_9cmVPMt-1024.webp 1024w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="eager" decoding="async" src="/posts/voip-with-poe/rz_9cmVPMt-200.jpeg" alt="A stack of voip phones" width="1024" height="1024" srcset="/posts/voip-with-poe/rz_9cmVPMt-200.jpeg 200w, /posts/voip-with-poe/rz_9cmVPMt-400.jpeg 400w, /posts/voip-with-poe/rz_9cmVPMt-800.jpeg 800w, /posts/voip-with-poe/rz_9cmVPMt-1024.jpeg 1024w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
+            </div>
+            <div class="wa-stack">
+                <h2>📞 Networking Lab: Hold Please…VoIP & PoE</h2>
+                <p>by: Anthony Gardés</p>
+                <wa-format-date date="Tue Mar 03 2026 16:00:00 GMT-0800 (Pacific Standard Time)" month="long" day="numeric" year="numeric"></wa-format-date>
+            <div class="wa-cluster wa-gap-2xs">
+<p><wa-tag size="small" appearance="filled"><a href="/tags/networking/"># networking</a></wa-tag></p>
+<p><wa-tag size="small" appearance="filled"><a href="/tags/ccna/"># ccna</a></wa-tag></p>
+<p><wa-tag size="small" appearance="filled"><a href="/tags/labs/"># labs</a></wa-tag></p>
+<p><wa-tag size="small" appearance="filled"><a href="/tags/voip/"># voip</a></wa-tag></p>
+<p></p></div>
+</div>
+</div>
+</div><p></p>
+</div>
+<p>This lab covers a pretty solid chunk of CCNA-related material, along with a couple of topics that aren't covered that much. This is one I'd tackle maybe around the halfway mark of your studies, but if you're up for a challenge and want to learn, this is the one for you! I personally haven't seen any labs that put these ideas together like this, so I really hope you enjoy this one. Below is a list of topics covered, along with some pre-reqs.</p>
+<p><strong>Difficulty:</strong> 7/10</p>
+<p><strong>Topics Covered:</strong> VLANs, Trunking, PoE, VoIP, SVI's, DHCP, CME, Subnetting, EtherChannels, and OSPF.</p>
+<p><strong>Pre-Reqs:</strong></p>
+<ul>
+<li><a href="https://www.netacad.com/cisco-packet-tracer" target="_blank">Cisco Packet Tracer</a></li>
+<li>Computer</li>
+<li>Basic/Intermediate knowledge of networking (some CCNA studies)</li>
+<li>Cisco IOS CLI commands (? is your friend)</li>
+</ul>
+<p>Below is the unconfigured starting point for this lab. If you get stuck, I'll have a completed version of this lab at the end of this post, along with some troubleshooting tips.</p>
+<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./VOIP-Lab-Start">
+  <wa-icon slot="start" name="download"></wa-icon>
+  VoIP Lab Start
+</wa-button>
+<div class="wa-frame" style="min-height: 100px; max-height: 500px; aspect-ratio: auto;">
+  <picture><source type="image/webp" srcset="/posts/voip-with-poe/zTK7PXA2rF-200.webp 200w, /posts/voip-with-poe/zTK7PXA2rF-400.webp 400w, /posts/voip-with-poe/zTK7PXA2rF-800.webp 800w, /posts/voip-with-poe/zTK7PXA2rF-1200.webp 1200w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"><img loading="lazy" decoding="async" src="/posts/voip-with-poe/zTK7PXA2rF-200.jpeg" alt="topology of the VoIP lab" width="1200" height="702" srcset="/posts/voip-with-poe/zTK7PXA2rF-200.jpeg 200w, /posts/voip-with-poe/zTK7PXA2rF-400.jpeg 400w, /posts/voip-with-poe/zTK7PXA2rF-800.jpeg 800w, /posts/voip-with-poe/zTK7PXA2rF-1200.jpeg 1200w" sizes="(max-width: 640px) 100vw, min(45ch, 50vw)"></picture>
+</div>
+<p>This is the topology we will be deploying. Quick heads-up: the access switch is Layer 3-capable, but we're only using it that way to get PoE working in Packet Tracer. In the real world, this would typically be a Layer 2 device, so don't let that throw you off. This isn't a step-by-step configuration guide; the goal is to get your brain juices flowing. I'll drop some hints along the way in dropdowns, but try to struggle through it first before peeking! Lastly, if you forget commands, try using the <code>?</code> to troubleshoot your way through. This is hands down the best way to get these commands to stick and speed up your CLI skills.</p>
+<h2>ASW1 Configuration</h2>
+<p>Start at the access layer and work your way up. Get your VLANs and ports sorted here before touching anything else.</p>
+<ol>
+<li>Create VLANs 10, 20, 30, and 99 — name them DATA, VOICE, SERVERS, and NATIVE respectively</li>
+<li>Configure Fa0/1 through Fa0/5 as access ports on VLAN 10 with VLAN 20 as the voice VLAN</li>
+<li>Configure Fa0/6 as an access port on VLAN 30 for the server</li>
+<li>Create a Layer 2 EtherChannel using four interfaces for the uplink to DSW1, then trunk it up, allow VLANs 10, 20, and 30, and set VLAN 99 as the native VLAN</li>
+</ol>
+<wa-card>
+    <strong>💡Hints</strong>
+        <div class="wa-stack">
+            <wa-details appearance="plain">
+<p slot="summary">Commands Used</p>                
+<pre>
+vlan
+name
+interface
+switchport
+channel-group
+show vlan brief
+show etherchannel summary
+</pre>
+            </wa-details>
+        </div>
+</wa-card>
+<p><wa-divider></wa-divider></p>
+<h2>DSW1 Configuration</h2>
+<p>Now that ASW1 is good to go, head up to the distribution layer. This is where all the routing magic happens, so take your time here.</p>
+<ol>
+<li>Enable IP routing — don't forget this one, it'll drive you crazy if you do</li>
+<li>Create a loopback address for DSW1; this is used as a router ID for OSPF (I used 2.2.2.2)</li>
+<li>Create VLANs 10, 20, 30, and 99 — use the same names as ASW1</li>
+<li>Create a Layer 2 EtherChannel using four interfaces for the downlink to ASW1, and match the trunk config on ASW1 exactly</li>
+<li>Create a Layer 3 EtherChannel using two interfaces for the uplink to R1 and assign the appropriate IP address</li>
+<li>Create SVIs for VLANs 10, 20, and 30 and assign the appropriate gateway IP</li>
+<li>Configure the DHCP relay on the data and voice SVIs pointing to the server outlined in the topology</li>
+<li>Configure OSPF and advertise all appropriate networks, including your loopback</li>
+</ol>
+<wa-card>
+    <strong>💡Hints</strong>
+        <div class="wa-stack">
+            <wa-details appearance="plain">
+                <p slot="summary">EtherChannel between DSW1 and ASW1</p>
+                The EtherChannel between DSW1 and ASW1 uses PAgP, but feel free to use LACP. Just ensure both sides use the same protocol and are set up appropriately. Make sure the trunk and VLAN configs match on both sides before bringing it up.
+            </wa-details>
+            <wa-details appearance="plain">
+                <p slot="summary">EtherChannel between DSW1 and R1</p>
+                Remember, this is a Layer 3 EtherChannel; configurations are a bit different, but the concepts are similar. This channel group will require routing; ensure the switch ports are configured accordingly.
+            </wa-details>
+            <wa-details appearance="plain">
+                <p slot="summary">Inter-VLAN routing not working?</p>
+                This one gets everyone at least once — don't forget `ip routing` on DSW1. It's a switch, so Layer 3 forwarding is off by default. Without it your SVIs will have IPs but won't actually route anything between VLANs.
+            </wa-details>
+            <wa-details appearance="plain">
+                <p slot="summary">DHCP Relay</p>
+                This one gets people tripped up — ensure you set up the `ip helper-address` on each SVI that will be using DHCP (DATA & VOICE) and point it to your DHCP server. In this lab it's the server in VLAN 30.
+            </wa-details>
+            <wa-details appearance="plain">
+                <p slot="summary">Commands Used</p>
+<pre>
+ip routing
+vlan
+name
+interface
+switchport
+no switchport
+channel-group
+ip address
+ip helper-address
+router ospf
+network
+show ip route
+show ip ospf neighbor
+</pre>
+            </wa-details>
+        </div>
+</wa-card>
+<p><wa-divider></wa-divider></p>
+<h2>Server Configuration</h2>
+<p>Short and sweet, just need to get DHCP sorted for both the data and voice VLANs.</p>
+<ol>
+<li>Configure the server with a static IP address and assign the appropriate gateway address</li>
+<li>Configure a DHCP pool for the data VLAN and set the default gateway to DSW1's VLAN 10 SVI</li>
+<li>Configure a DHCP pool for the voice VLAN, then set the default gateway to DSW1's VLAN 20 SVI and point the TFTP server to R1's loopback (this will be 1.1.1.1)</li>
+<li>Exclude the gateway addresses from both pools so they don't get handed out to clients</li>
+</ol>
+<wa-card>
+    <strong>💡Hints</strong>
+        <div class="wa-stack">
+            <wa-details appearance="plain">
+                <p slot="summary">Server Configuration</p>
+                Server configuration is done via the PT GUI, not the CLI. Use the Services tab on the server to add your DHCP pools.
+            </wa-details>
+            <wa-details appearance="plain">
+                <p slot="summary">TFTP Server field</p>
+                In Packet Tracer's server DHCP GUI, the "TFTP Server" field serves the same function as DHCP Option 150. This is what tells the phones where to download their config and where to register. Set it to R1's loopback (1.1.1.1) in the voice pool — without this, your phones will get an IP but won't register with CME (R1's telephony service).
+            </wa-details>
+            <wa-details appearance="plain">
+                <p slot="summary">Static IP and Gateway</p>
+                This server needs a static IP address and an appropriate gateway to enable inter-VLAN communication. The gateway address in this case is the SVI in VLAN 30 on DSW1.
+            </wa-details>
+        </div>
+</wa-card>
+<p><wa-divider></wa-divider></p>
+<h2>R1 Configuration</h2>
+<p>Last stop, the router. This is where we tie everything together with OSPF and get CME up and running for the phones.</p>
+<ol>
+<li>Create a loopback address (1.1.1.1) — this will be used for both OSPF and CME</li>
+<li>Create a port channel with two interfaces and assign the appropriate IP address to the port channel</li>
+<li>Configure OSPF and add the appropriate networks</li>
+<li>Enable telephony-service and configure a max of 5 ephones and 5 dns</li>
+<li>Set the CME source address to your loopback and enable auto assign</li>
+<li>Configure 4 ephone-dns with extension numbers 101–104</li>
+<li>Configure 4 ephones, assign each one a MAC address and map it to its ephone-dn</li>
+</ol>
+<wa-card>
+    <strong>💡Hints</strong>
+        <div class="wa-stack">
+            <wa-details appearance="plain">
+                <p slot="summary">Commands Used</p>
+<pre>
+interface 
+Loopback0 
+ip address 
+interface 
+Port-channel 
+channel-group
+router ospf
+network
+telephony-service
+ip source-address
+auto assign
+ephone-dn
+number
+ephone
+mac-address
+type
+button
+show ephone 
+</pre>
+            </wa-details>
+        </div>
+</wa-card>
+<p><wa-divider></wa-divider></p>
+<h2>Verification</h2>
+<p>Alright, let's see if it all works. Pick up one of the phones in PT and dial another extension. If the call connects, you nailed it. If not, it's time to troubleshoot. Below are some troubleshooting ideas, as well as the completed file to cross-reference, but try troubleshooting it without first.</p>
+<p><strong>On ASW1 and DSW1:</strong></p>
+<pre><code>show vlan brief
+show etherchannel summary
+</code></pre>
+<p><strong>On DSW1:</strong></p>
+<pre><code>show ip ospf neighbor
+show ip route
+</code></pre>
+<p><strong>On R1:</strong></p>
+<pre><code>show ip ospf neighbor
+show ip route
+show ephone
+</code></pre>
+<h2>Troubleshooting and Issues Faced</h2>
+<p>When building this out, I ran into a couple of issues initially. I wanted to share issues I had come across.</p>
+<ul>
+<li><strong>Missing helper-address on DATA SVI:</strong> I missed configuring the IP helper-address on my DATA SVI on DSW1. I was getting IPs on my phones, but nothing on my PCs. Looked over the running config and saw I had omitted the helper-address on VLAN 10.</li>
+<li><strong>Phones not getting numbers:</strong> Ensure the telephony service IP points to R1’s loopback address, where the service lives, and ensure the DHCP server’s TFTP server points to R1's loopback.</li>
+<li><strong>EtherChannel bundling issue:</strong> I had a duplex mismatch on one of the ports in the bundle, which caused an error. I had to manually fix the switchport to ensure full duplex on all ports on both sides.</li>
+</ul>
+<h3>Other Troubleshooting Tips</h3>
+<ul>
+<li><strong>Check your VLANs</strong>: ensure all VLANs match, and that trunks allow the appropriate VLANs.</li>
+<li><strong>L3 EtherChannel:</strong> Verify that configurations are created on the port channel, not on the interfaces; it's easy to accidentally configure a single port.</li>
+<li><strong>L2 EtherChannel:</strong> Same note as L3, but also ensure that the appropriate VLANs are enabled on both sides. It's very easy to overwrite VLAN assignments. If you are adding VLANs, don't forget to use <code>add</code>; otherwise, you risk wiping all your prior assignments.</li>
+<li>This lab has no ACLs; you should be able to use ping and traceroute to troubleshoot and pinpoint issues.</li>
+<li><strong>Routing:</strong> We rely on OSPF to handle a large portion of routing, ensure OSPF forms adjacencies, and ensure that routing tables contain all necessary routes, including loopback routes. R1's loopback can easily be overlooked when configuring OSPF in this lab.</li>
+</ul>
+<wa-button size="large" appearance="filled-outlined" variant="neutral" href="./VOIP-Lab-Competed">
+  <wa-icon slot="start" name="download"></wa-icon>
+  Completed Lab
+</wa-button>
+<br><br>
+If you tried this lab or got hung up anywhere, please feel free to shoot me an email or leave a message below! The comments section is a newer feature. I would love to hear your thoughts on the feature and the lab!
+
+        
+          <section style="margin-top: 3rem;">
+  <wa-divider style="margin-bottom: 2rem;"></wa-divider>
+  <script src="https://giscus.app/client.js" data-repo="antoes/anthonygardes.com" data-repo-id="R_kgDOQoz7Xg" data-category="Announcements" data-category-id="DIC_kwDOQoz7Xs4C3_t2" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="https://www.anthonygardes.com/public/giscus-theme.css" data-lang="en" crossorigin="anonymous" async="">
+  </script>
+</section>
+
+        
+      </main>
+      <footer slot="footer" id="footer" style="max-width: 90ch; margin: 0 auto; display: flex; justify-content: center;">
+        <div class="wa-cluster wa-gap-s">
+          <wa-button href="https://www.linkedin.com/in/anthonygardes" target="_blank" rel="noopener" appearance="plain" size="large">
+            <wa-icon name="linkedin" family="brands" label="linkedin"></wa-icon>
+          </wa-button>
+        </div>
+        <div class="wa-split">
+          <p>Built by Anthony Gardés w/
+            <a href="https://www.11ty.dev/" target="_blank" rel="noopener">11ty</a>,
+            <a href="https://webawesome.com/" target="_blank" rel="noopener">Webawesome</a>, and
+            <a href="https://azure.microsoft.com/en-us" target="_blank" rel="noopener">Microsoft Azure</a>.</p>
+          <p>© 2026 All rights reserved.</p>
+        </div>
+      </footer>
+    </wa-page>
+
+    <wa-drawer id="mobileNav" placement="start" label="Menu" data-pagefind-ignore="">
+      <nav class="wa-stack wa-gap-xs">
+        <wa-button appearance="plain" href="/" size="large">Home</wa-button>
+        <wa-divider></wa-divider>
+        <wa-button appearance="plain" href="/posts" size="large">Posts</wa-button>
+        <wa-divider></wa-divider>
+        <wa-button appearance="plain" href="/contact" size="large">Contact</wa-button>
+      </nav>
+    </wa-drawer>
+
+    <wa-dialog label="Search" id="searchDialog" style="--width: 600px;" data-pagefind-ignore="">
+      <wa-input id="searchInput" placeholder="Search posts…" size="large" clearable="" autocomplete="off">
+        <wa-icon slot="prefix" name="magnifying-glass"></wa-icon>
+      </wa-input>
+      <div id="searchResults" class="wa-stack wa-gap-s" style="margin-top: 1rem;"></div>
+    </wa-dialog>
+
+    <script>
+      const searchBtn = document.getElementById('searchBtn');
+      const searchDialog = document.getElementById('searchDialog');
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+      let pagefind;
+
+      async function openSearch() {
+        searchDialog.show();
+        if (!pagefind) {
+          try {
+            pagefind = await import('/pagefind/pagefind.js');
+          } catch {
+            searchResults.innerHTML = '<p class="wa-caption-m">Search index not found — run <code>npm run build</code> first.</p>';
+            return;
+          }
+        }
+        searchInput.focus();
+      }
+
+      searchBtn.addEventListener('click', openSearch);
+      document.getElementById('searchBtnMobile').addEventListener('click', openSearch);
+
+      // Cmd+K / Ctrl+K shortcut
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          openSearch();
+        }
+      });
+
+      // Clear results when dialog closes so it opens fresh next time
+      searchDialog.addEventListener('wa-after-hide', () => {
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+      });
+
+      let debounce;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounce);
+        debounce = setTimeout(async () => {
+          const query = e.target.value.trim();
+          if (!query) { searchResults.innerHTML = ''; return; }
+
+          const [postSearch, tagSearch] = await Promise.all([
+            pagefind.search(query, { filters: { type: "post" } }),
+            pagefind.search(query, { filters: { type: "tag" } })
+          ]);
+
+          const hasPosts = postSearch.results.length > 0;
+          const hasTags = tagSearch.results.length > 0;
+
+          if (!hasPosts && !hasTags) {
+            searchResults.innerHTML = '<p class="wa-caption-m">No results found.</p>';
+            return;
+          }
+
+          let html = '';
+
+          if (hasPosts) {
+            const postData = await Promise.all(postSearch.results.slice(0, 5).map(r => r.data()));
+            html += `<p class="wa-caption-s" style="font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Posts</p>`;
+            html += postData.map(r => `
+              <a href="${r.url}" style="text-decoration:none;display:block;">
+                <wa-card>
+                  <strong>${r.meta.title || 'Untitled'}</strong>
+                  <p class="wa-caption-m" style="margin:0.25rem 0 0;">${r.meta.description || r.excerpt}</p>
+                </wa-card>
+              </a>
+            `).join('');
+          }
+
+          if (hasPosts && hasTags) {
+            html += '<wa-divider style="margin:0.75rem 0;"></wa-divider>';
+          }
+
+          if (hasTags) {
+            const tagData = await Promise.all(tagSearch.results.slice(0, 5).map(r => r.data()));
+            html += `<p class="wa-caption-s" style="font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.5rem;">Tags</p>`;
+            html += tagData.map(r => `
+              <a href="${r.url}" style="text-decoration:none;display:block;">
+                <wa-card>
+                  <strong>${r.meta.title || 'Untitled'}</strong>
+                </wa-card>
+              </a>
+            `).join('');
+          }
+
+          searchResults.innerHTML = html;
+        }, 250);
+      });
+    </script>
+  </body>
+</html>
