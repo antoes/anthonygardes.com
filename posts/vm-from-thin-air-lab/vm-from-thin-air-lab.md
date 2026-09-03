@@ -57,29 +57,6 @@ Now try pinging your public address; the new NSG rules should allow it. You are 
         <img src="./pingSuccess.webp" alt="terminal ping success screenshot" />
 </div>
 
-<code>
-— 20.3.249.27 ping statistics —
-4 packets transmitted, 0 packets received, 100.0% packet loss [anthony@Anthonys-MBP-16 ~ % ping 20.3.249.27
-PING 20.3.249.27 (20.3.249.27): 56 data bytes
-Request timeout for imp_seq e Request timeout for icmp_seq 1
-Request timeout for icmp_seq 2
-Request timeout for imp_seq 3
-Request timeout for icmp_seq
-4
-Request timeout for icmp_seq 5
-Request timeout for imp_seq 6
-Request timeout for icmp_seq 7
-Request timeout for imp_seq
-8
-Request timeout for imp_seq 9
-Request timeout for imp_seq 10
-Request timeout for imp_seq 11
-Request timeout for imp_seq 12
-^C
--- 20.3.249.27 ping statistics —
-14 packets transmitted, 0 packets received, 100.0% packet loss
-<code>
-
 The next bits are optional, but just as fun if you want to get a bit more hands-on with SSH and set up a basic web server on your new cloud VM.
 
 ## Set Permissions (Linux/macOS only)
