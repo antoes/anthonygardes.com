@@ -14,7 +14,7 @@ If you're studying for the CCNA or are a curious explorer sharpening your networ
 Prerequisites:
 - <a href="https://www.netacad.com/cisco-packet-tracer" target="_blank">Cisco Packet Tracer</a>
 - A Computer
-- Concepts: VLANs, 802.1Q trunking, router sub-interfaces, default gateways, subnetting basics, and basic Cisco CLI commands. test 1 2 3.
+- Concepts: VLANs, 802.1Q trunking, router sub-interfaces, default gateways, subnetting basics, and basic Cisco CLI commands. test 1 2 3 4 5.
 
 To get the most out of this lab, try completing each step without referring to the tips provided (the tips are incomplete answers intended to kickstart you if you get stuck). Repeat this lab until you can complete all the steps without needing to refer to any dropdown tips. The starter packet tracer file is provided below; the final will be included at the end of the post, in case you get stuck and need a reference. Happy labbing!
 
